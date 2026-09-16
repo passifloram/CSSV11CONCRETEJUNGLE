@@ -1,0 +1,617 @@
+/* ===== QEEL ===== */
+
+.qeel {
+  --qeel-gap: 10px;
+  grid-template-rows: 252px !important;
+  display: grid;
+  grid-template-columns: 370px minmax(0, 1fr);
+  align-items: stretch;
+  gap: var(--qeel-gap);
+  width: calc(100% - 10px);
+  max-width: 890px;
+  margin: 0 auto;
+  padding: 10px;
+  background: var(--transparent-one);
+  backdrop-filter: blur(2px);
+  border-radius: var(--radius-normal);
+  box-sizing: border-box;
+}
+
+/* Ancien divider : inutile et masqué même s'il est resté dans le HTML */
+.qeel-divider {
+  display: none !important;
+}
+
+
+/* ===== COLONNE GAUCHE ===== */
+
+.qeel-left {
+  grid-template-rows: 210px 32px !important;
+  height: 252px !important;
+  display: grid;
+  grid-template-columns: 210px minmax(0, 1fr);
+  gap: var(--qeel-gap);
+  min-width: 0;
+}
+
+.qeel-groups {
+  display: grid;
+  grid-template-columns: repeat(2, 100px);
+  grid-template-rows: repeat(2, 100px);
+  gap: var(--qeel-gap);
+}
+
+.qeel-group {
+  position: relative;
+  display: block;
+  width: 100px;
+  height: 100px;
+  overflow: hidden;
+  border-radius: var(--radius-normal);
+}
+
+.qeel-group::before {
+  position: absolute;
+  inset: 0;
+  content: "";
+  background: center / cover no-repeat var(--group-image);
+  filter: grayscale(100%);
+}
+
+.qeel-group span {
+  position: absolute;
+  z-index: 1;
+  right: 6px;
+  bottom: 6px;
+  left: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 28px;
+  padding: 4px 6px;
+  color: var(--stay-white);
+  background: var(--group-colour);
+  border-radius: var(--radius-mini);
+  font-family: var(--font-title);
+  font-size: 9px;
+  font-weight: 900;
+  letter-spacing: .7px;
+  line-height: 11px;
+  opacity: 0;
+  text-align: center;
+  text-transform: uppercase;
+  transform: translateY(6px);
+  transition: opacity .3s ease, transform .3s ease;
+}
+
+.qeel-group:hover span {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.qeel-group.qeel-wf {
+  --group-colour: #b5673f;
+  --group-image: url("https://64.media.tumblr.com/093b0ef93ab8b531e219b3352862f31c/cb36f3c89f2e504a-e6/s250x400/bf579d460dd7291ffb4a0e1269efd8d4160dd898.gif");
+}
+
+.qeel-group.qeel-dc {
+  --group-colour: #38747b;
+  --group-image: url("https://64.media.tumblr.com/72f4f4ecafe3eef478fb0b51c6ddfc49/cb36f3c89f2e504a-51/s250x400/86d0ac470000c245781adaad70c3a36e48a57e26.gif");
+}
+
+.qeel-group.qeel-sd {
+  --group-colour: #81628c;
+  --group-image: url("https://64.media.tumblr.com/5d5688a44de0e546aa588f6e17ffc862/cb36f3c89f2e504a-9a/s250x400/81f1ac3775aa2e51f132c3dfb7128be9e9217249.gif");
+}
+
+.qeel-group.qeel-cs {
+  --group-colour: #9d4651;
+  --group-image: url("https://64.media.tumblr.com/02ab95a2fc760bc9fab1eeb0431f800b/cb36f3c89f2e504a-5b/s250x400/2f029fe6360ee33d2575a84ffabddc17c429b594.gif");
+}
+
+
+/* ==================================================
+   ANCIEN EMPLACEMENT DES STATS
+   Mini-plan de métro décoratif
+   ================================================== */
+
+.qeel-left::after {
+  grid-column: 1;
+  grid-row: 2;
+
+  display: block;
+  width: 210px;
+  height: 32px;
+  content: "";
+
+  background:
+    /* Stations — ligne supérieure */
+    radial-gradient(
+      circle at 10% 9px,
+      var(--neutral) 0 2px,
+      var(--one) 2.5px 4px,
+      transparent 4.5px
+    ),
+    radial-gradient(
+      circle at 38% 9px,
+      var(--neutral) 0 2px,
+      var(--one) 2.5px 4px,
+      transparent 4.5px
+    ),
+    radial-gradient(
+      circle at 70% 9px,
+      var(--neutral) 0 2px,
+      var(--one) 2.5px 4px,
+      transparent 4.5px
+    ),
+
+    /* Stations — ligne inférieure */
+    radial-gradient(
+      circle at 28% 23px,
+      var(--neutral) 0 2px,
+      var(--three) 2.5px 4px,
+      transparent 4.5px
+    ),
+    radial-gradient(
+      circle at 61% 23px,
+      var(--neutral) 0 2px,
+      var(--three) 2.5px 4px,
+      transparent 4.5px
+    ),
+    radial-gradient(
+      circle at 90% 23px,
+      var(--neutral) 0 2px,
+      var(--three) 2.5px 4px,
+      transparent 4.5px
+    ),
+
+    /* Correspondance centrale */
+    radial-gradient(
+      circle at 49% 16px,
+      var(--neutral) 0 3px,
+      var(--two) 3.5px 6px,
+      transparent 6.5px
+    ),
+
+    /* Rails */
+    linear-gradient(
+      to right,
+      var(--one),
+      var(--two)
+    ) center 9px / 100% 2px no-repeat,
+
+    linear-gradient(
+      to right,
+      var(--two),
+      var(--three)
+    ) center 23px / 100% 2px no-repeat,
+
+    /* Fond */
+    var(--neutral);
+
+  border: 1px solid var(--neutralDarker);
+  border-radius: var(--radius-mini);
+  box-sizing: border-box;
+}
+
+.qeel-derinsc {
+  grid-column: 2;
+  grid-row: 1 / span 2;
+  min-width: 0;
+  min-height: 0;
+}
+
+#last_user {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  border-radius: var(--radius-normal);
+}
+
+/* Avatar du dernier inscrit : discret et grisé par défaut */
+
+#lastuser_avatar {
+  position: absolute !important;
+  inset: 0 !important;
+  display: block !important;
+  width: 100% !important;
+  height: 100% !important;
+  overflow: hidden;
+  display: block;
+  filter: none;
+  opacity: 1;
+}
+
+#lastuser_avatar img {
+  position: absolute !important;
+  inset: 0 !important;
+  display: block !important;
+  width: 100% !important;
+  height: 100% !important;
+  max-width: none !important;
+  max-height: none !important;
+  margin: 0 !important;
+  object-fit: cover !important;
+  object-position: center;
+  filter: grayscale(100%) brightness(.55) contrast(1.08);
+  transition: filter .35s ease;
+}
+
+
+.qeel-derinsc-bloc {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  padding: 8px;
+  color: var(--stay-white);
+  background: rgba(20, 18, 30, .42);
+  border-radius: inherit;
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  opacity: 1;
+  text-align: center;
+  transition: opacity .35s ease;
+}
+
+/* Petit intitulé au-dessus du pseudo */
+
+.qeel-derinsc-bloc::before {
+  content: "just arrived";
+  color: var(--stay-white);
+  font-family: var(--font-title);
+  font-size: 8px;
+  font-weight: 900;
+  letter-spacing: 1.4px;
+  line-height: 10px;
+  text-transform: uppercase;
+}
+
+
+/* Au survol : avatar net, cartouche et nom invisibles */
+#last_user:hover #lastuser_avatar,
+#last_user:hover #lastuser_avatar img {
+  filter: grayscale(0) brightness(1) contrast(1);
+  opacity: 1;
+}
+
+#last_user:hover .qeel-derinsc-bloc {
+  opacity: 0;
+}
+
+#newest_user a {
+  color: var(--stay-white) !important;
+  font-family: var(--font-title);
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: 1px;
+  line-height: 15px;
+  text-transform: uppercase;
+}
+
+
+/* ===== COLONNE DROITE ===== */
+
+.qeel-members {
+  display: grid;
+  grid-column: 2;
+  grid-template-columns: minmax(0, 1fr) !important;
+  grid-template-rows: 21px minmax(0, 1fr) 21px minmax(0, 1fr);
+  gap: var(--qeel-gap);
+  min-width: 0;
+  min-height: 0;
+  align-self: stretch;
+}
+
+.qeel-online,
+.qeel-online-bloc,
+.qeel-24h,
+.qeel-24h-bloc,
+#last_connected {
+  grid-column: 1 !important;
+}
+
+.qeel-online,
+.qeel-24h {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 10px;
+  height: 21px;
+  min-height: 21px;
+  margin: 0;
+  padding: 0 10px;
+  overflow: hidden;
+  color: var(--textColorAccent);
+  background: var(--neutral);
+  border-radius: var(--radius-mini);
+  box-sizing: border-box;
+  font-size: 14px;
+  line-height: 14px;
+  white-space: nowrap;
+}
+
+/* Ligne qui prolonge le titre */
+.qeel-online::after,
+.qeel-24h::after {
+  flex: 1;
+  min-width: 45px;
+  height: 9px;
+  content: "";
+  opacity: .85;
+
+  background:
+    /* Stations */
+    radial-gradient(
+      circle at 15% 50%,
+      var(--neutral) 0 2px,
+      var(--one) 2.5px 4px,
+      transparent 4.5px
+    ),
+    radial-gradient(
+      circle at 50% 50%,
+      var(--neutral) 0 2px,
+      var(--two) 2.5px 4px,
+      transparent 4.5px
+    ),
+    radial-gradient(
+      circle at 85% 50%,
+      var(--neutral) 0 2px,
+      var(--three) 2.5px 4px,
+      transparent 4.5px
+    ),
+
+    /* Rail */
+    linear-gradient(
+      to right,
+      var(--one),
+      var(--two),
+      var(--three)
+    ) center / 100% 2px no-repeat;
+}
+
+.qeel-online {
+  grid-row: 1;
+}
+
+.qeel-online-bloc {
+  grid-row: 2;
+}
+
+.qeel-24h {
+  grid-row: 3;
+}
+
+.qeel-24h-bloc,
+#last_connected {
+  grid-row: 4;
+  position: static !important;
+  width: auto !important;
+  margin: 0 !important;
+}
+
+.qeel-online-bloc,
+.qeel-24h-bloc {
+  min-height: 0;
+  padding: 8px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  background: var(--neutral);
+  border-radius: var(--radius-normal);
+  box-sizing: border-box;
+  font-size: var(--normal-size);
+  line-height: 15px;
+}
+
+.qeel-online-bloc {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+#last_connected {
+  display: block !important;
+  text-align: left;
+}
+
+.qeel-members .separator {
+  height: 1px;
+  margin: 5px 0;
+  background: linear-gradient(.07turn, var(--one), var(--two));
+}
+
+#online_users {
+  display: block;
+  width: 100%;
+}
+
+#online_users a {
+  display: inline;
+  white-space: nowrap;
+}
+
+#last_connected a,
+#last_connected span,
+#last_connected strong {
+  display: inline !important;
+  white-space: normal;
+}
+
+/* ==================================================
+   STATISTIQUES — BANDEAU UNDERGROUND
+   Placé au-dessus du QEEL
+   ================================================== */
+
+.qeel-stats {
+  display: grid !important;
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  gap: 10px !important;
+
+  width: calc(100% - 10px) !important;
+  max-width: 890px !important;
+  height: 52px !important;
+
+  margin: 0 auto 10px !important;
+  padding: 8px 10px !important;
+
+  background: var(--transparent-one);
+  border-radius: var(--radius-normal);
+  backdrop-filter: blur(2px);
+  box-sizing: border-box;
+}
+
+
+/* Chaque moitié du bandeau */
+.qeel-stat {
+  --stat-line: var(--two);
+
+  position: relative;
+  display: flex !important;
+  align-items: center !important;
+  gap: 11px !important;
+
+  width: auto !important;
+  min-width: 0 !important;
+  height: 36px !important;
+
+  margin: 0 !important;
+  padding: 5px 10px !important;
+  overflow: hidden !important;
+
+  color: var(--textColorAccent);
+  background: var(--neutral) !important;
+  border: 1px solid var(--neutralDarker) !important;
+  border-radius: var(--radius-mini) !important;
+  box-sizing: border-box !important;
+}
+
+
+/* Deuxième statistique : autre couleur de ligne */
+.qeel-stat:nth-child(2) {
+  --stat-line: var(--three);
+}
+
+
+/* Roundel Underground */
+.qeel-stat::before {
+  flex: 0 0 22px;
+
+  width: 22px;
+  height: 22px;
+  content: "";
+
+  background:
+    linear-gradient(
+      to bottom,
+      transparent calc(50% - 2px),
+      var(--stat-line) calc(50% - 2px),
+      var(--stat-line) calc(50% + 2px),
+      transparent calc(50% + 2px)
+    );
+
+  border: 4px solid var(--stat-line);
+  border-radius: 50%;
+  box-sizing: border-box;
+}
+
+
+/* Ligne qui continue après la statistique */
+.qeel-stat::after {
+  flex: 1;
+  min-width: 40px;
+  height: 11px;
+  content: "";
+  opacity: .8;
+
+  background:
+    radial-gradient(
+      circle at 15% 50%,
+      var(--neutral) 0 2px,
+      var(--one) 2.5px 4px,
+      transparent 4.5px
+    ),
+    radial-gradient(
+      circle at 50% 50%,
+      var(--neutral) 0 2px,
+      var(--two) 2.5px 4px,
+      transparent 4.5px
+    ),
+    radial-gradient(
+      circle at 85% 50%,
+      var(--neutral) 0 2px,
+      var(--three) 2.5px 4px,
+      transparent 4.5px
+    ),
+    linear-gradient(
+      to right,
+      var(--one),
+      var(--two),
+      var(--three)
+    ) center / 100% 2px no-repeat;
+}
+
+
+/* Texte statistique */
+.qeel-stat > span {
+  position: relative;
+  z-index: 1;
+  flex: 0 1 auto;
+  min-width: 0;
+}
+
+.qeel-stat s1 {
+  display: block !important;
+  margin: 0 !important;
+  padding: 0 !important;
+
+  color: var(--textColorAccent) !important;
+  font-family: var(--font-title);
+  font-size: 15px !important;
+  font-weight: 900;
+  letter-spacing: .7px;
+  line-height: 18px !important;
+
+  text-align: left;
+  text-transform: uppercase;
+  white-space: nowrap !important;
+}
+
+
+/* Scrollbars */
+
+.qeel-online-bloc::-webkit-scrollbar,
+.qeel-24h-bloc::-webkit-scrollbar {
+  width: 3px;
+}
+
+.qeel-online-bloc::-webkit-scrollbar-thumb,
+.qeel-24h-bloc::-webkit-scrollbar-thumb {
+  background: linear-gradient(.07turn, var(--one), var(--two));
+  border-radius: 3px;
+}
+
+.qeel-online-bloc::-webkit-scrollbar-track,
+.qeel-24h-bloc::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+
+/* Responsive */
+
+@media (max-width: 830px) {
+  .qeel {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: auto;
+    max-width: 420px;
+  }
+
+  .qeel-left,
+  .qeel-members {
+    grid-column: 1;
+    height: 252px;
+  }
+}
