@@ -1,38 +1,224 @@
-/* ===== QEEL ===== */
+/* ==========================================================
+   SOMMAIRE — MOTS-CLÉS POUR CTRL + F  
+   (ça devait être que le QEEL mais j'me suis laissé.e un peu déborder lmao)
+
+   QEEL
+   - BANDEAU STATISTIQUE
+   - QEEL STRUCTURE GÉNÉRALE
+   - QEEL GROUPES
+   - QEEL DERNIER INSCRIT
+   - QEEL MEMBRES CONNECTÉS
+
+   FOOTER
+   - FOOTER STRUCTURE GÉNÉRALE
+   - FOOTER LIENS
+   - FOOTER CRÉDITS
+   - FOOTER IMAGE
+
+   ACCUEIL ET FORUM
+   - WIDGET MÉTÉO
+   - DERNIERS PRÉ-LIENS
+   - MIND THE GAP
+   - ALIGNEMENT UNIFORME DE L’EN-TÊTE
+   - AVATAR DARK
+   - COLLAGE DU QEEL ET DU FOOTER
+   - FORUMS EN DEUX COLONNES
+   - SWITCH DE DISPOSITION
+
+   ANNUAIRE
+   - DIRECTORY MEMBER LIST
+   - FORMULAIRE INTÉGRÉ
+   - CARTES VERTICALES
+   - FILTRES COMPACTS
+
+   CRUSH HOUR / TINDER
+   - TINDER FORUM F25
+   - ÉCRAN « IT’S A MATCH »
+   - OUVERTURE DU MATCH
+   - PUBLICATIONS DE LA CONVERSATION
+   - PROFIL À ONGLETS
+   - NOTIFICATION DE LIKE
+
+   RESPONSIVE ET THÈMES
+   - MODE DARK
+   - MODE LIGHT
+   - VERSION MOBILE
+   
+   AUTRES
+   - NOUVEAU PROFIL A VOLETS BITCH
+   - MINI PROFIL DES MESSAGES A CING ONGLETS BITCH
+   - CORRECTIF BITCH
+   - CARROUSEL CONDITIONNEL DES SOUS-FORUMS
+   - SWITCHEROO DEPLIANT
+   - FENÊTRE DES SMILEYS
+   - STATISTIQUES AVEC DE GRANDS NOMBRES
+   ========================================================== */
+
+
+/* BANDEAU STATISTIQUE REGISTRES LONDONIENS */
+
+.qeel-stats {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+
+  width: calc(100% - 10px);
+  max-width: 890px;
+  height: 52px;
+
+  margin: 0 auto 3px;
+  padding: 8px 10px;
+
+  background: var(--transparent-one);
+  border-radius: var(--radius-normal);
+  backdrop-filter: blur(2px);
+  box-sizing: border-box;
+}
+
+/* Bloc individuel d’une statistique */
+
+.qeel-stat {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 11px;
+
+  min-width: 0;
+  height: 36px;
+  margin: 0;
+  padding: 5px 10px;
+  overflow: hidden;
+
+  color: var(--textColorAccent);
+  background: var(--neutral);
+  border: 1px solid var(--neutralDarker);
+  border-radius: var(--radius-mini);
+  box-sizing: border-box;
+}
+
+/* Numéro du registre */
+
+.qeel-stat::before {
+  display: flex;
+  flex: 0 0 25px;
+  align-items: center;
+  justify-content: center;
+
+  width: 25px;
+  height: 22px;
+
+  color: var(--stay-white);
+  background: var(--gradient-one);
+  border-radius: 2px;
+  box-sizing: border-box;
+
+  font-family: var(--font);
+  font-size: 7px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  line-height: 9px;
+  text-align: center;
+}
+
+.qeel-stat:first-child::before {
+  content: "01";
+}
+
+.qeel-stat:nth-child(2)::before {
+  content: "02";
+}
+
+/* truc décoratif à droite */
+
+.qeel-stat::after {
+  flex: 1;
+  min-width: 60px;
+  padding-left: 10px;
+  content: "LONDON RECORDS";
+
+  color: var(--contrastLighter);
+  border-left: 1px solid var(--neutralDarker);
+
+  font-family: monospace;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 1.3px;
+  line-height: 8px;
+
+  opacity: .72;
+  text-align: right;
+  white-space: nowrap;
+}
+
+/* Conteneur du texte dynamique */
+
+.qeel-stat > span {
+  position: relative;
+  z-index: 1;
+  flex: 0 1 auto;
+  min-width: 0;
+}
+
+/* Nombre de messages ou de membres */
+
+.qeel-stat s1 {
+  display: block;
+  margin: 0;
+  padding: 0;
+
+  color: var(--textColorAccent);
+  font-family: var(--font-title);
+  font-size: 15px;
+  font-weight: 900;
+  letter-spacing: .7px;
+  line-height: 18px;
+
+  text-align: left;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+/* QEEL STRUCTURE GÉNÉRALE */
 
 .qeel {
   --qeel-gap: 10px;
-  grid-template-rows: 252px !important;
+
   display: grid;
   grid-template-columns: 370px minmax(0, 1fr);
+  grid-template-rows: 252px;
   align-items: stretch;
   gap: var(--qeel-gap);
+
   width: calc(100% - 10px);
   max-width: 890px;
   margin: 0 auto;
   padding: 10px;
+
   background: var(--transparent-one);
-  backdrop-filter: blur(2px);
   border-radius: var(--radius-normal);
+  backdrop-filter: blur(2px);
   box-sizing: border-box;
 }
 
-/* Ancien divider : inutile et masqué même s'il est resté dans le HTML */
 .qeel-divider {
   display: none !important;
 }
 
-
-/* ===== COLONNE GAUCHE ===== */
+/* QEEL COLONNE GAUCHE ET GROUPES */
 
 .qeel-left {
-  grid-template-rows: 210px 32px !important;
-  height: 252px !important;
+  position: relative;
+
   display: grid;
   grid-template-columns: 210px minmax(0, 1fr);
+  grid-template-rows: 210px 32px;
   gap: var(--qeel-gap);
+
+  height: 252px;
   min-width: 0;
 }
+
+/* Grille des groupes */
 
 .qeel-groups {
   display: grid;
@@ -44,19 +230,24 @@
 .qeel-group {
   position: relative;
   display: block;
+
   width: 100px;
   height: 100px;
   overflow: hidden;
+
   border-radius: var(--radius-normal);
 }
 
 .qeel-group::before {
   position: absolute;
   inset: 0;
+
   content: "";
   background: center / cover no-repeat var(--group-image);
   filter: grayscale(100%);
 }
+
+/* Nom du groupe affiché au survol */
 
 .qeel-group span {
   position: absolute;
@@ -64,19 +255,24 @@
   right: 6px;
   bottom: 6px;
   left: 6px;
+
   display: flex;
   align-items: center;
   justify-content: center;
+
   min-height: 28px;
   padding: 4px 6px;
+
   color: var(--stay-white);
   background: var(--group-colour);
   border-radius: var(--radius-mini);
+
   font-family: var(--font-title);
   font-size: 9px;
   font-weight: 900;
   letter-spacing: .7px;
   line-height: 11px;
+
   opacity: 0;
   text-align: center;
   text-transform: uppercase;
@@ -89,136 +285,120 @@
   transform: translateY(0);
 }
 
+/* Couleurs et images des groupes */
+
 .qeel-group.qeel-wf {
-  --group-colour: #b5673f;
-  --group-image: url("https://64.media.tumblr.com/093b0ef93ab8b531e219b3352862f31c/cb36f3c89f2e504a-e6/s250x400/bf579d460dd7291ffb4a0e1269efd8d4160dd898.gif");
+  --group-colour: #C3681D;
+  --group-image: url("https://i.postimg.cc/xCJQy9JL/fuckdatshit3.gif");
 }
 
 .qeel-group.qeel-dc {
-  --group-colour: #38747b;
-  --group-image: url("https://64.media.tumblr.com/72f4f4ecafe3eef478fb0b51c6ddfc49/cb36f3c89f2e504a-51/s250x400/86d0ac470000c245781adaad70c3a36e48a57e26.gif");
+  --group-colour: #C4716E;
+  --group-image: url("https://i.postimg.cc/vBgyLGg7/fuckdatshit2.gif");
 }
 
 .qeel-group.qeel-sd {
-  --group-colour: #81628c;
-  --group-image: url("https://64.media.tumblr.com/5d5688a44de0e546aa588f6e17ffc862/cb36f3c89f2e504a-9a/s250x400/81f1ac3775aa2e51f132c3dfb7128be9e9217249.gif");
+  --group-colour: #7f7fb8;
+  --group-image: url("https://i.postimg.cc/zBbNSqbC/fuckdatshit.gif");
 }
 
 .qeel-group.qeel-cs {
-  --group-colour: #9d4651;
-  --group-image: url("https://64.media.tumblr.com/02ab95a2fc760bc9fab1eeb0431f800b/cb36f3c89f2e504a-5b/s250x400/2f029fe6360ee33d2575a84ffabddc17c429b594.gif");
+  --group-colour: #628898;
+  --group-image: url("https://i.postimg.cc/B6L3cJLx/fuckdatshit4.gif");
 }
 
+/* Retour aux couleurs originales au survol */
+.qeel-group:hover::before {
+  -webkit-filter: none !important;
+  filter: none !important;
+}
 
-/* ==================================================
-   ANCIEN EMPLACEMENT DES STATS
-   Mini-plan de métro décoratif
-   ================================================== */
+/* Plaque de coordonnées londoniennes */
 
 .qeel-left::after {
   grid-column: 1;
   grid-row: 2;
 
-  display: block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
   width: 210px;
   height: 32px;
-  content: "";
+  content: "51,5085° N  ·  -,1255° W";
 
-  background:
-    /* Stations — ligne supérieure */
-    radial-gradient(
-      circle at 10% 9px,
-      var(--neutral) 0 2px,
-      var(--one) 2.5px 4px,
-      transparent 4.5px
-    ),
-    radial-gradient(
-      circle at 38% 9px,
-      var(--neutral) 0 2px,
-      var(--one) 2.5px 4px,
-      transparent 4.5px
-    ),
-    radial-gradient(
-      circle at 70% 9px,
-      var(--neutral) 0 2px,
-      var(--one) 2.5px 4px,
-      transparent 4.5px
-    ),
-
-    /* Stations — ligne inférieure */
-    radial-gradient(
-      circle at 28% 23px,
-      var(--neutral) 0 2px,
-      var(--three) 2.5px 4px,
-      transparent 4.5px
-    ),
-    radial-gradient(
-      circle at 61% 23px,
-      var(--neutral) 0 2px,
-      var(--three) 2.5px 4px,
-      transparent 4.5px
-    ),
-    radial-gradient(
-      circle at 90% 23px,
-      var(--neutral) 0 2px,
-      var(--three) 2.5px 4px,
-      transparent 4.5px
-    ),
-
-    /* Correspondance centrale */
-    radial-gradient(
-      circle at 49% 16px,
-      var(--neutral) 0 3px,
-      var(--two) 3.5px 6px,
-      transparent 6.5px
-    ),
-
-    /* Rails */
+  color: var(--contrastLight);
+  /* background:
     linear-gradient(
-      to right,
-      var(--one),
-      var(--two)
-    ) center 9px / 100% 2px no-repeat,
-
-    linear-gradient(
-      to right,
-      var(--two),
-      var(--three)
-    ) center 23px / 100% 2px no-repeat,
-
-    /* Fond */
+      90deg,
+      transparent,
+      rgba(255, 255, 255, .08),
+      transparent
+    ),
     var(--neutral);
 
   border: 1px solid var(--neutralDarker);
-  border-radius: var(--radius-mini);
+  border-radius: var(--radius-mini);*/
   box-sizing: border-box;
+
+  font-family: monospace;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.4px;
+  line-height: 10px;
+  text-align: center;
+  text-transform: uppercase;
 }
+
+/* Petit repère géographique */
+
+.qeel-left::before {
+  position: absolute;
+  z-index: 2;
+  bottom: 11px;
+  left: 9px;
+
+  width: 6px;
+  height: 6px;
+  content: "";
+
+  background: var(--three);
+  border: 2px solid var(--neutral);
+  border-radius: 50%;
+  box-shadow: 0 0 0 1px var(--three);
+}
+
+/* QEEL DERNIER INSCRIT */
 
 .qeel-derinsc {
   grid-column: 2;
   grid-row: 1 / span 2;
+
   min-width: 0;
   min-height: 0;
 }
 
 #last_user {
   position: relative;
+
   width: 100%;
   height: 100%;
   overflow: hidden;
+
   border-radius: var(--radius-normal);
 }
 
-/* Avatar du dernier inscrit : discret et grisé par défaut */
+/* Avatar du dernier inscrit */
 
 #lastuser_avatar {
   position: absolute !important;
   inset: 0 !important;
+
   display: block !important;
   width: 100% !important;
   height: 100% !important;
   overflow: hidden;
-  display: block;
+
   filter: none;
   opacity: 1;
 }
@@ -226,42 +406,51 @@
 #lastuser_avatar img {
   position: absolute !important;
   inset: 0 !important;
+
   display: block !important;
   width: 100% !important;
   height: 100% !important;
   max-width: none !important;
   max-height: none !important;
+
   margin: 0 !important;
+
   object-fit: cover !important;
   object-position: center;
   filter: grayscale(100%) brightness(.55) contrast(1.08);
+
   transition: filter .35s ease;
 }
 
+/* Calque placé sur l’avatar */
 
 .qeel-derinsc-bloc {
   position: absolute;
   inset: 0;
+
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   gap: 5px;
+
   padding: 8px;
+
   color: var(--stay-white);
   background: rgba(20, 18, 30, .42);
   border-radius: inherit;
+
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
+
   opacity: 1;
   text-align: center;
   transition: opacity .35s ease;
 }
 
-/* Petit intitulé au-dessus du pseudo */
-
 .qeel-derinsc-bloc::before {
   content: "just arrived";
+
   color: var(--stay-white);
   font-family: var(--font-title);
   font-size: 8px;
@@ -271,8 +460,8 @@
   text-transform: uppercase;
 }
 
+/* Effets au survol */
 
-/* Au survol : avatar net, cartouche et nom invisibles */
 #last_user:hover #lastuser_avatar,
 #last_user:hover #lastuser_avatar img {
   filter: grayscale(0) brightness(1) contrast(1);
@@ -282,6 +471,8 @@
 #last_user:hover .qeel-derinsc-bloc {
   opacity: 0;
 }
+
+/* Pseudo du dernier inscrit */
 
 #newest_user a {
   color: var(--stay-white) !important;
@@ -293,15 +484,17 @@
   text-transform: uppercase;
 }
 
-
-/* ===== COLONNE DROITE ===== */
+/* QEEL MEMBRES CONNECTÉS */
 
 .qeel-members {
   display: grid;
   grid-column: 2;
-  grid-template-columns: minmax(0, 1fr) !important;
-  grid-template-rows: 21px minmax(0, 1fr) 21px minmax(0, 1fr);
-  gap: var(--qeel-gap);
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-rows:
+    21px minmax(0, 1fr)
+    21px minmax(0, 1fr);
+  gap: 0;
+
   min-width: 0;
   min-height: 0;
   align-self: stretch;
@@ -315,37 +508,47 @@
   grid-column: 1 !important;
 }
 
+/* Titres des listes */
+
 .qeel-online,
 .qeel-24h {
   display: flex;
   align-items: center;
   justify-content: flex-start;
   gap: 10px;
+
   height: 21px;
   min-height: 21px;
   margin: 0;
   padding: 0 10px;
   overflow: hidden;
+
   color: var(--textColorAccent);
   background: var(--neutral);
   border-radius: var(--radius-mini);
   box-sizing: border-box;
+
   font-size: 14px;
   line-height: 14px;
   white-space: nowrap;
 }
 
-/* Ligne qui prolonge le titre */
+/* Base commune aux deux lignes décoratives */
+
 .qeel-online::after,
 .qeel-24h::after {
   flex: 1;
   min-width: 45px;
   height: 9px;
   content: "";
-  opacity: .85;
 
+  opacity: .85;
+}
+
+/* Cornelia Street 3 ronds */
+
+.qeel-online::after {
   background:
-    /* Stations */
     radial-gradient(
       circle at 15% 50%,
       var(--neutral) 0 2px,
@@ -364,8 +567,6 @@
       var(--three) 2.5px 4px,
       transparent 4.5px
     ),
-
-    /* Rail */
     linear-gradient(
       to right,
       var(--one),
@@ -373,6 +574,55 @@
       var(--three)
     ) center / 100% 2px no-repeat;
 }
+
+/* So Long, London 4 ronds espacés irrégulièrement */
+
+.qeel-24h::after {
+  background:
+    radial-gradient(
+      circle at 8% 50%,
+      var(--neutral) 0 2px,
+      var(--one) 2.5px 4px,
+      transparent 4.5px
+    ),
+    radial-gradient(
+      circle at 29% 50%,
+      var(--neutral) 0 2px,
+      var(--two) 2.5px 4px,
+      transparent 4.5px
+    ),
+    radial-gradient(
+      circle at 61% 50%,
+      var(--neutral) 0 2px,
+      var(--three) 2.5px 4px,
+      transparent 4.5px
+    ),
+    radial-gradient(
+      circle at 91% 50%,
+      var(--neutral) 0 2px,
+      var(--one) 2.5px 4px,
+      transparent 4.5px
+    ),
+    linear-gradient(
+      to right,
+      var(--one),
+      var(--two),
+      var(--three)
+    ) center / 100% 2px no-repeat;
+}
+
+/* Fond transparent */
+
+.qeel-online,
+.qeel-24h,
+.qeel-online-bloc,
+.qeel-24h-bloc,
+#last_connected {
+  background: transparent !important;
+  border-radius: 0;
+}
+
+/* Positionnement dans la grille */
 
 .qeel-online {
   grid-row: 1;
@@ -388,11 +638,14 @@
 
 .qeel-24h-bloc,
 #last_connected {
-  grid-row: 4;
   position: static !important;
+  grid-row: 4;
+
   width: auto !important;
   margin: 0 !important;
 }
+
+/* Contenu des listes */
 
 .qeel-online-bloc,
 .qeel-24h-bloc {
@@ -400,9 +653,11 @@
   padding: 8px;
   overflow-x: hidden;
   overflow-y: auto;
+
   background: var(--neutral);
   border-radius: var(--radius-normal);
   box-sizing: border-box;
+
   font-size: var(--normal-size);
   line-height: 15px;
 }
@@ -421,6 +676,7 @@
 .qeel-members .separator {
   height: 1px;
   margin: 5px 0;
+
   background: linear-gradient(.07turn, var(--one), var(--two));
 }
 
@@ -441,147 +697,7 @@
   white-space: normal;
 }
 
-/* ==================================================
-   STATISTIQUES — BANDEAU UNDERGROUND
-   Placé au-dessus du QEEL
-   ================================================== */
-
-.qeel-stats {
-  display: grid !important;
-  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
-  gap: 10px !important;
-
-  width: calc(100% - 10px) !important;
-  max-width: 890px !important;
-  height: 52px !important;
-
-  margin: 0 auto 10px !important;
-  padding: 8px 10px !important;
-
-  background: var(--transparent-one);
-  border-radius: var(--radius-normal);
-  backdrop-filter: blur(2px);
-  box-sizing: border-box;
-}
-
-
-/* Chaque moitié du bandeau */
-.qeel-stat {
-  --stat-line: var(--two);
-
-  position: relative;
-  display: flex !important;
-  align-items: center !important;
-  gap: 11px !important;
-
-  width: auto !important;
-  min-width: 0 !important;
-  height: 36px !important;
-
-  margin: 0 !important;
-  padding: 5px 10px !important;
-  overflow: hidden !important;
-
-  color: var(--textColorAccent);
-  background: var(--neutral) !important;
-  border: 1px solid var(--neutralDarker) !important;
-  border-radius: var(--radius-mini) !important;
-  box-sizing: border-box !important;
-}
-
-
-/* Deuxième statistique : autre couleur de ligne */
-.qeel-stat:nth-child(2) {
-  --stat-line: var(--three);
-}
-
-
-/* Roundel Underground */
-.qeel-stat::before {
-  flex: 0 0 22px;
-
-  width: 22px;
-  height: 22px;
-  content: "";
-
-  background:
-    linear-gradient(
-      to bottom,
-      transparent calc(50% - 2px),
-      var(--stat-line) calc(50% - 2px),
-      var(--stat-line) calc(50% + 2px),
-      transparent calc(50% + 2px)
-    );
-
-  border: 4px solid var(--stat-line);
-  border-radius: 50%;
-  box-sizing: border-box;
-}
-
-
-/* Ligne qui continue après la statistique */
-.qeel-stat::after {
-  flex: 1;
-  min-width: 40px;
-  height: 11px;
-  content: "";
-  opacity: .8;
-
-  background:
-    radial-gradient(
-      circle at 15% 50%,
-      var(--neutral) 0 2px,
-      var(--one) 2.5px 4px,
-      transparent 4.5px
-    ),
-    radial-gradient(
-      circle at 50% 50%,
-      var(--neutral) 0 2px,
-      var(--two) 2.5px 4px,
-      transparent 4.5px
-    ),
-    radial-gradient(
-      circle at 85% 50%,
-      var(--neutral) 0 2px,
-      var(--three) 2.5px 4px,
-      transparent 4.5px
-    ),
-    linear-gradient(
-      to right,
-      var(--one),
-      var(--two),
-      var(--three)
-    ) center / 100% 2px no-repeat;
-}
-
-
-/* Texte statistique */
-.qeel-stat > span {
-  position: relative;
-  z-index: 1;
-  flex: 0 1 auto;
-  min-width: 0;
-}
-
-.qeel-stat s1 {
-  display: block !important;
-  margin: 0 !important;
-  padding: 0 !important;
-
-  color: var(--textColorAccent) !important;
-  font-family: var(--font-title);
-  font-size: 15px !important;
-  font-weight: 900;
-  letter-spacing: .7px;
-  line-height: 18px !important;
-
-  text-align: left;
-  text-transform: uppercase;
-  white-space: nowrap !important;
-}
-
-
-/* Scrollbars */
+/* Scrollbars du QEEL */
 
 .qeel-online-bloc::-webkit-scrollbar,
 .qeel-24h-bloc::-webkit-scrollbar {
@@ -599,19 +715,6408 @@
   background: transparent;
 }
 
+/* autre qeel */
 
-/* Responsive */
+body .qeel-stats {
+  margin-bottom: 0 !important;
+}
 
-@media (max-width: 830px) {
-  .qeel {
+body .qeel-stats + .qeel {
+  margin-top: 0 !important;
+}
+
+/* FOOTER STRUCTURE GÉNÉRALE */
+
+.footer-container {
+  display: grid;
+  grid-template-columns: 215px 430px 215px;
+  grid-template-rows: repeat(3, 27px);
+  justify-content: center;
+  gap: 10px;
+
+  margin-bottom: 20px;
+  padding: 15px 0;
+
+  /*background: var(--transparent-two);*/
+  border-radius: var(--radius-normal);
+}
+
+/* Correction forcée de la grille du footer */
+
+body div.footer-container {
+  position: relative !important;
+  display: grid !important;
+
+  grid-template-columns: 215px 430px 215px !important;
+  grid-template-rows: repeat(3, 27px) !important;
+  grid-auto-flow: row !important;
+
+  align-items: stretch !important;
+  justify-content: center !important;
+  align-content: center !important;
+
+  column-gap: 10px !important;
+  row-gap: 10px !important;
+
+  width: 890px !important;
+  max-width: 890px !important;
+  min-height: 131px !important;
+
+  margin: 0 auto 20px !important;
+  padding: 15px 5px !important;
+
+  float: none !important;
+  clear: both !important;
+
+  /*background: var(--transparent-one);*/
+  border-radius: var(--radius-normal);
+  box-sizing: border-box !important;
+}
+
+/* Placement des trois colonnes */
+
+body .footer-container > .footer-liens {
+  grid-column: 1 !important;
+  grid-row: 1 / 4 !important;
+
+  width: 215px !important;
+  height: 101px !important;
+  margin: 0 !important;
+}
+
+body .footer-container > .footer-credits {
+  grid-column: 2 !important;
+  grid-row: 1 / 4 !important;
+
+  width: 430px !important;
+  height: 101px !important;
+  margin: 0 !important;
+}
+
+body .footer-container > .footer-img {
+  grid-column: 3 !important;
+  grid-row: 1 / 4 !important;
+
+  width: 215px !important;
+  height: 101px !important;
+  margin: 0 !important;
+}
+
+/* FOOTER LIENS ET PLAQUES ADMINISTRATIVES */
+
+.footer-liens {
+  z-index: 999;
+
+  display: grid;
+  grid-column: 1;
+  grid-row: 1 / 4;
+  grid-template-columns: 215px;
+  grid-template-rows: repeat(3, 27px);
+  gap: 10px;
+
+  width: 215px;
+  height: 101px;
+  margin: 0;
+  padding: 0;
+
+  background: transparent;
+  border-radius: var(--radius-normal);
+  box-sizing: border-box;
+  text-align: center;
+}
+
+/* Neutralisation des anciens styles Forumactif */
+
+.footer-liens .pa-liens-a,
+.footer-a {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 215px;
+  height: 27px;
+  min-height: 27px;
+  margin: 0;
+  padding: 0 35px;
+  overflow: hidden;
+
+  color: var(--textColorAccent) !important;
+  /*background: var(--neutral) !important;*/
+  /*border: 1px solid var(--neutralDarker);*/
+  /*border-radius: var(--radius-mini);*/
+  box-sizing: border-box;
+
+  font-family: var(--font);
+  font-size: 9px !important;
+  font-weight: 700;
+  letter-spacing: .7px;
+  line-height: 10px;
+  text-align: center;
+  text-decoration: none;
+  text-overflow: ellipsis;
+  text-transform: uppercase;
+  white-space: nowrap;
+
+  transition:
+    color .3s ease,
+    /*background .3s ease,*/
+    border-color .3s ease;
+}
+
+/* Numéro de registre placé à gauche */
+
+.footer-a::before {
+  position: absolute;
+  top: 3px;
+  bottom: 3px;
+  left: 3px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 27px;
+  content: attr(data-code);
+
+  color: var(--stay-white);
+  background: var(--gradient-one);
+  border-radius: 2px;
+
+  font-family: monospace;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 1px;
+display:none;
+}
+
+/* Code londonien placé à droite */
+
+.footer-a::after {
+  position: absolute;
+  top: 0;
+  right: 8px;
+  bottom: 0;
+
+  display: flex;
+  align-items: center;
+  content: "LDN";
+
+  color: var(--contrastLighter);
+  font-family: monospace;
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  opacity: .65;
+}
+
+/* Effets au survol */
+
+.footer-liens .footer-a:hover {
+  color: var(--accentClr) !important;
+  background: var(--neutralTwo) !important;
+  border-color: var(--two);
+}
+
+.footer-liens .footer-a:hover::before {
+  filter: brightness(1.08);
+}
+
+/* Ancien conteneur éventuel */
+
+.footer-liens-autres {
+  display: none;
+}
+
+/* FOOTER CRÉDITS ET FICHE D’ARCHIVES */
+
+.footer-credits {
+  grid-column: 2;
+  grid-row: 1 / 4;
+
+  width: 430px;
+  height: 101px;
+  padding: 3px 7px;
+  /*overflow-x: hidden;
+  overflow-y: auto;*/
+   overflow:hidden;
+
+  color: var(--textColor);
+  /*background: var(--neutral);
+  border: 1px solid var(--neutralDarker);
+  border-radius: var(--radius-normal);*/
+  box-sizing: border-box;
+
+  font-size: var(--little-size);
+  line-height: 10px;
+  text-align: justify;
+}
+
+/* Cartouche supérieur */
+
+.footer-credits-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  min-height: 17px;
+  margin: 0 0 7px;
+  padding: 0 7px;
+
+  color: var(--textColorAccent);
+  /*background: var(--gradient-one);*/
+  background:transparent !important;
+  background-color:transparent !important;
+  background-image:none !important;
+  border-radius: 2px;
+
+  font-family: monospace;
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 1.2px;
+  line-height: 17px;
+  text-align: left;
+  text-transform: uppercase;
+}
+
+/* Numéro de dossier */
+
+.footer-credits-title::after {
+  content: "REF. V10/SEPT26";
+
+  padding-left: 8px;
+  border-left: 1px solid rgba(255, 255, 255, .35);
+  opacity: .8;
+}
+
+/* Texte des crédits */
+
+.footer-credits-text {
+  font-size: var(--normal-size);
+  line-height: 15px;
+}
+
+/* Scrollbar des crédits */
+
+.footer-credits::-webkit-scrollbar {
+  width: 3px;
+}
+
+.footer-credits::-webkit-scrollbar-thumb {
+  background: linear-gradient(var(--one), var(--two), var(--three));
+  border-radius: 3px;
+}
+
+.footer-credits::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* FOOTER IMAGE */
+
+.footer-img {
+  position: relative;
+
+  grid-column: 3;
+  grid-row: 1 / 4;
+
+  width: 215px;
+  height: 101px;
+  overflow: hidden;
+
+  background: var(--neutral);
+  border: 1px solid var(--neutralDarker);
+  border-radius: var(--radius-normal);
+  box-sizing: border-box;
+}
+
+.footer-img img {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+  margin: 0;
+
+  border-radius: inherit;
+  object-fit: cover;
+  object-position: center;
+  filter: grayscale(75%) brightness(.72) contrast(1.05);
+
+  transition: filter .35s ease, transform .35s ease;
+}
+
+/* Légende placée sur la photographie */
+
+.footer-img::after {
+  position: absolute;
+  right: 7px;
+  bottom: 2px;
+  left: 7px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  min-height: 18px;
+  padding: 2px 6px;
+  content: "LONDON · CAM 05";
+
+  color: var(--stay-white);
+  /* background: rgba(20, 18, 30, .58);
+  border: 1px solid rgba(255, 255, 255, .18);
+  border-radius: 2px;
+  backdrop-filter: blur(3px);*/
+
+  font-family: monospace;
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  line-height: 8px;
+  text-align: center;
+  text-transform: uppercase;
+
+  pointer-events: none;
+}
+
+/* Retour des couleurs au survol */
+
+.footer-img:hover img {
+  filter: grayscale(0) brightness(.9) contrast(1);
+  transform: scale(1.025);
+}
+
+/* WIDGET MÉTÉO DE LONDRES */
+
+.up-notepad {
+  min-width: 0;
+  height: 150px;
+  max-height: 150px;
+}
+
+.london-widget {
+  width: 100%;
+  height: 150px;
+  max-height: 150px;
+  min-width: 0;
+  overflow: hidden;
+  padding: 8px 10px;
+
+  color: var(--textColor);
+  background: var(--transparent-two);
+  border: var(--border);
+  border-radius: var(--radius-normal);
+
+  font-family: var(--font);
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.london-widget *,
+.london-widget *::before,
+.london-widget *::after {
+  box-sizing: border-box;
+}
+
+/* Éléments utilisant une disposition flexible */
+
+.london-widget__head,
+.london-status > div,
+.london-data {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 6px;
+}
+
+/* En-tête du widget */
+
+.london-widget__head {
+  height: 15px;
+  padding-bottom: 5px;
+
+  color: var(--contrastLight);
+  border-bottom: 1px solid var(--neutralDarker);
+
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 1.4px;
+}
+
+.london-widget__head i {
+  color: var(--accentClr);
+}
+
+/* Météo principale */
+
+.london-weather {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+
+  height: 34px;
+  padding: 6px 0 4px;
+}
+
+.london-weather__icon {
+  width: 25px;
+
+  color: var(--accentClr);
+  font-size: 19px;
+  text-align: center;
+}
+
+.london-weather strong,
+.london-weather span {
+  display: block;
+}
+
+.london-weather strong {
+  max-width: 145px;
+  overflow: hidden;
+
+  color: var(--textColorAccent);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .8px;
+
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.london-weather span {
+  margin-top: 2px;
+
+  color: var(--contrastLight);
+  font-size: 17px;
+  font-weight: 500;
+  letter-spacing: 0;
+}
+
+/* Données météorologiques secondaires */
+
+.london-data {
+  height: 17px;
+  padding-bottom: 5px;
+
+  color: var(--textColor);
+  border-bottom: 1px solid var(--neutralDarker);
+
+  font-size: 10px;
+  letter-spacing: .3px;
+  text-transform: none;
+  white-space: nowrap;
+}
+
+.london-data b,
+.london-status b {
+  color: var(--contrastLight);
+  font-weight: 600;
+}
+
+/* État du réseau londonien */
+
+.london-status {
+  padding-top: 5px;
+
+  font-size: 9px;
+  letter-spacing: .4px;
+}
+
+.london-status p {
+  margin: 0 0 3px;
+
+  color: var(--accentClr);
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 1.2px;
+}
+
+.london-status > div {
+  min-height: 11px;
+  padding: 1px 0;
+}
+
+.london-status b {
+  max-width: 115px;
+  overflow: hidden;
+
+  text-align: right;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Couleurs des états */
+
+.london-status .is-good {
+  color: #719469;
+}
+
+#london-tube.is-alert {
+  color: #b56a72;
+}
+
+/* Heure de la dernière mise à jour */
+
+#london-updated {
+  display: block;
+  margin-top: 3px;
+
+  color: var(--contrastLighter);
+  font-size: 8px;
+  letter-spacing: .3px;
+  line-height: 1;
+  text-align: right;
+  text-transform: none;
+}
+
+/* Adaptation aux très petits écrans */
+
+/* DERNIERS PRÉ-LIENS */
+
+.pa-preliens {
+  grid-column: 1 / span 2;
+  grid-row: 2 / span 2;
+
+  min-width: 0;
+}
+
+.pa-preliens-list {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+
+  height: 216px;
+  margin-top: 10px;
+  padding-right: 3px;
+  overflow-y: auto;
+}
+
+/* Ligne individuelle */
+
+.pa-prelien-row {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+
+  min-height: 29px;
+  padding: 4px 7px;
+
+  background: var(--neutral);
+  border-radius: var(--radius-normal);
+}
+
+/* Zone ou catégorie */
+
+.pa-prelien-zone {
+  flex: 0 0 82px;
+  overflow: hidden;
+
+  padding: 3px 5px;
+
+  color: var(--stay-white);
+  background: var(--gradient-one);
+  border-radius: var(--radius-mini);
+
+  font-size: 7px;
+  font-weight: 600;
+  letter-spacing: .5px;
+  line-height: 10px;
+  text-align: center;
+  text-overflow: ellipsis;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+/* Titre du pré-lien */
+
+.pa-prelien-title {
+  min-width: 0;
+  overflow: hidden;
+
+  color: var(--textColorAccent);
+  font-size: var(--mini-size) !important;
+  line-height: 13px !important;
+
+  text-overflow: ellipsis;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.pa-prelien-title:hover {
+  color: var(--accentClr) !important;
+}
+
+/* Messages de chargement et d’erreur */
+
+.pa-preliens-loading,
+.pa-preliens-error {
+  padding: 10px;
+
+  color: var(--contrastLighter);
+  font-size: var(--mini-size);
+  text-align: center;
+  text-transform: uppercase;
+}
+
+/* DESCRIPTION du MIND THE GAP */
+
+.up-desc {
+  position: relative;
+  display: block;
+
+  width: 100%;
+  height: 150px !important;
+  min-height: 150px;
+  max-height: 150px;
+  padding: 10px 14px !important;
+  overflow: hidden !important;
+
+  color: var(--textColor);
+  background-color: transparent;
+
+  border: var(--border);
+  border-radius: var(--radius-normal);
+  box-shadow: none;
+
+  font-size: 13px;
+  line-height: 14px;
+  text-align: justify;
+}
+
+/* Suppression des sauts et décorations hérités */
+
+.up-desc > br {
+  display: none;
+}
+
+.up-desc::before,
+.up-desc::after {
+  content: none;
+}
+
+/* Ligne de station */
+
+.up-titre {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  min-height: 22px;
+  margin: 0 0 6px;
+
+  white-space: nowrap;
+}
+
+/* Mini-roundel : anneau et barre centrale */
+
+.up-titre::before {
+  flex: 0 0 22px;
+
+  width: 20px;
+  height: 20px;
+  content: "";
+
+  background:
+    linear-gradient(
+      to bottom,
+      transparent calc(50% - 1px),
+      var(--two) calc(50% - 1px),
+      var(--two) calc(50% + 1px),
+      transparent calc(50% + 1px)
+    );
+
+  border: 4px solid var(--two);
+  border-radius: 50%;
+  box-shadow:
+    0 0 0 1px var(--neutral),
+    0 2px 7px rgba(0, 0, 0, .08);
+}
+
+/* Mini-plan de métro */
+
+.up-titre::after {
+  flex: 1;
+
+  min-width: 58px;
+  height: 24px;
+  content: "";
+
+  opacity: .85;
+  background:
+    /* Stations — ligne 1 */
+    radial-gradient(
+      circle at 12% 4px,
+      var(--one) 0 2px,
+      transparent 2.4px
+    ),
+    radial-gradient(
+      circle at 52% 4px,
+      var(--one) 0 2px,
+      transparent 2.4px
+    ),
+    radial-gradient(
+      circle at 88% 4px,
+      var(--one) 0 2px,
+      transparent 2.4px
+    ),
+
+    /* Stations — ligne 2 */
+    radial-gradient(
+      circle at 28% 12px,
+      var(--two) 0 2px,
+      transparent 2.4px
+    ),
+    radial-gradient(
+      circle at 68% 12px,
+      var(--two) 0 2px,
+      transparent 2.4px
+    ),
+
+    /* Stations — ligne 3 */
+    radial-gradient(
+      circle at 12% 20px,
+      var(--three) 0 2px,
+      transparent 2.4px
+    ),
+    radial-gradient(
+      circle at 52% 20px,
+      var(--three) 0 2px,
+      transparent 2.4px
+    ),
+    radial-gradient(
+      circle at 88% 20px,
+      var(--three) 0 2px,
+      transparent 2.4px
+    ),
+
+    /* Rails */
+    linear-gradient(var(--one), var(--one))
+      center 4px / 100% 1px no-repeat,
+    linear-gradient(var(--two), var(--two))
+      center 12px / 100% 1px no-repeat,
+    linear-gradient(var(--three), var(--three))
+      center 20px / 100% 1px no-repeat;
+}
+
+/* Titre principal */
+
+.up-titre vl {
+  display: inline-block;
+
+  color: var(--textColorAccent);
+  font-family: var(--font-title);
+  font-size: 14px;
+  font-weight: 900;
+  letter-spacing: 1.5px;
+  line-height: 18px;
+}
+
+/* Sous-titre de présentation */
+
+.up-desc b2 {
+  display: block;
+  margin: 0 0 6px;
+
+  color: var(--accentClr);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: .45px;
+  line-height: 12px;
+  text-transform: none;
+}
+
+.up-desc i1 {
+  color: var(--textColorAccent);
+  font-size: 11px;
+  font-style: italic;
+}
+
+/* Neutralisation des anciens fonds du titre */
+
+.up-titre,
+.up-titre vl {
+  color: var(--textColorAccent) !important;
+  background: none !important;
+}
+
+/* Forçage de la visibilité du titre */
+
+.up-desc .up-titre > vl {
+  display: inline-block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+
+  color: var(--contrast) !important;
+  background: transparent !important;
+  -webkit-text-fill-color: var(--contrast);
+
+  font-family: var(--font-title) !important;
+  font-size: 14px !important;
+  font-weight: 900 !important;
+  letter-spacing: 1.5px !important;
+  line-height: 18px !important;
+
+  text-shadow: 0 1px 0 var(--contrast);
+}
+
+/* ALIGNEMENT UNIFORME DE L’EN-TÊTE */
+
+.up {
+  grid-template-rows: 25px 150px 30px;
+  align-items: stretch;
+}
+
+/* Ligne supérieure */
+
+.up-liens {
+  height: 25px;
+  align-items: stretch;
+}
+
+.up-bbc,
+.up-recensement,
+.up-questions,
+.up-balises {
+  height: 25px;
+  align-items: stretch;
+}
+
+.up-liens .iconrasu,
+.up-mini-bloc {
+  height: 25px;
+  min-height: 25px;
+}
+
+.up-mini-bloc {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding-top: 0;
+  padding-bottom: 0;
+
+  line-height: 1;
+}
+
+.up-mini-bloc a,
+.up-mini-bloc s1 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  height: 100%;
+  line-height: 1;
+}
+
+/* Ligne centrale */
+
+.up-desc,
+.up-img,
+.up-notepad {
+  width: 100%;
+  height: 150px !important;
+  min-height: 150px;
+  max-height: 150px;
+  margin: 0;
+  align-self: stretch;
+}
+
+.up-img {
+  position: relative;
+  overflow: hidden;
+}
+
+.up-img iframe {
+  display: block !important;
+
+  width: 100% !important;
+  height: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
+
+  border: 0 !important;
+
+ filter:
+    brightness(.9)
+    contrast(1)
+    saturate(.85);
+}
+
+/*
+ * Cette règle passe après overflow: hidden !important.
+ * Le !important défini plus haut conserve donc la priorité.
+ */
+.up-desc {
+  overflow: auto;
+}
+
+.london-widget {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+  margin: 0;
+}
+
+/* Ligne inférieure */
+
+.up-last-line {
+  height: 30px;
+  align-items: stretch;
+}
+
+.up-discord,
+.up-topsites,
+.up-separator {
+  height: 30px;
+  margin: 0;
+
+  align-self: stretch;
+  align-items: center;
+}
+
+.up-discord > div,
+.up-topsites > div {
+  height: 30px;
+  min-height: 30px;
+  margin: 0;
+}
+
+.up-last-line a.btn {
+  width: 30px;
+  height: 30px;
+  min-height: 30px;
+  padding: 0;
+
+  align-self: stretch;
+}
+
+/* Neutralisation des marges typographiques imprévues */
+
+.up s1,
+.up vl,
+.up hr {
+  vertical-align: middle;
+}
+
+/* MASQUER L'URL DE L'AVATAR DARK DANS LE PROFIL */
+
+.user_field.field-avatar-mode-sombre {
+    display: none !important;
+}
+
+/* Champ dans les messages */
+.field-avatar-mode-sombre,
+
+/* Champ dans la popup : identifiant Forumactif actuel */
+.profile_field#field_id1,
+
+/* Classe ajoutée par le script */
+.profile-dark-avatar-popup-field {
+    display: none !important;
+}
+
+/* COLLAGE DU QEEL ET DU FOOTER */
+
+#main-content > .qeel + br {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  line-height: 0 !important;
+}
+
+body #main-content > div.footer-container {
+  margin: -21px auto 20px !important;
+
+  border-radius:
+    0
+    0
+    var(--radius-normal)
+    var(--radius-normal) !important;
+}
+
+/* AUTRE */
+
+:root {
+  --qeel-background: var(--transparent-one);
+}
+
+body div.footer-container {
+  margin: 0 auto 20px !important;
+}
+
+body .qeel-stats {
+  margin-bottom: 0 !important;
+  border-radius:
+    var(--radius-normal)
+    var(--radius-normal)
+    0
+    0 !important;
+}
+
+body .qeel {
+  margin: 0 auto !important;
+  border-radius: 0 !important;
+}
+
+.qeel + br {
+  display: none !important;
+}
+
+body div.footer-container {
+  margin: 0 auto 20px !important;
+  border-radius:
+    0
+    0
+    var(--radius-normal)
+    var(--radius-normal) !important;
+}
+
+/* Coller le footer au QEEL */
+
+#main-content > .qeel + br {
+  display: none !important;
+}
+
+body #main-content > div.footer-container {
+  margin: 0 auto 20px !important;
+
+  border-radius:
+    0
+    0
+    var(--radius-normal)
+    var(--radius-normal) !important;
+}
+
+html body .qeel-stats,
+html body .qeel,
+html body #main-content .footer-container {
+  background: var(--qeel-background) !important;
+  backdrop-filter: blur(2px) !important;
+  -webkit-backdrop-filter: blur(2px) !important;
+}
+
+
+/* INDEX FORUMs EN DEUX COLONNES AVEC CARTES DÉCORATIVES */
+
+html,
+body {
+    min-width: 970px;
+}
+
+/* IMAGES PROPRES À CHAQUE CATÉGORIE Remplacer chaque URL par une adresse d'image .png ou .jpeg */
+
+html[data-forum-layout="columns"] {
+
+#c1 { --forum-filler-image: url("https://i.postimg.cc/bv2DH887/cat1.jpg"); }
+#c2 { --forum-filler-image: url("https://i.postimg.cc/bv2DH887/cat1.jpg"); }
+#c3 { --forum-filler-image: url("https://i.postimg.cc/XvcKNRPK/cat7.png"); }
+#c4 { --forum-filler-image: url("https://i.postimg.cc/0y4Kwrgh/cat4.jpg"); }
+#c5 { --forum-filler-image: url("https://i.postimg.cc/VNB9sxhq/cat2.png"); }
+#c6 { --forum-filler-image: url("https://i.postimg.cc/cLztn6qz/cat4-2.jpg"); }
+#c7 { --forum-filler-image: url("https://i.postimg.cc/dVfZyDPK/cat6-2.jpg"); }
+
+&[data-color-scheme="dark"] #c1 { --forum-filler-image: url("https://i.postimg.cc/Gps8JrdR/cat1-2.jpg"); }
+&[data-color-scheme="dark"] #c2 { --forum-filler-image: url("https://i.postimg.cc/Gps8JrdR/cat1-2.jpg"); }
+&[data-color-scheme="dark"] #c3 { --forum-filler-image: url("https://i.postimg.cc/dVfZyDPK/cat6-2.jpg"); }
+&[data-color-scheme="dark"] #c4 { --forum-filler-image: url("https://i.postimg.cc/cLztn6qz/cat4-2.jpg"); }
+&[data-color-scheme="dark"] #c5 { --forum-filler-image: url("https://i.postimg.cc/52rQCjd1/cat5.jpg"); }
+&[data-color-scheme="dark"] #c6 { --forum-filler-image: url("https://i.postimg.cc/DwN4Xmkh/cat7-2.jpg"); }
+&[data-color-scheme="dark"] #c7 { --forum-filler-image: url("https://i.postimg.cc/DwN4XmVH/cat5-2.jpg"); }
+
+/* SOUS-FORUMS — MODE CLAIR */
+
+#f7 {
+  --forum-filler-image:
+    url("https://i.postimg.cc/KYr7c6Wn/catlondoniscalling.jpg");
+}
+
+#f12 {
+  --forum-filler-image:
+    url("https://i.postimg.cc/DwN4Xmkh/cat7-2.jpg");
+}
+
+#f18 {
+  --forum-filler-image:
+    url("https://i.postimg.cc/g06XqdmF/cat2-2.jpg");
+}
+
+#f17 {
+  --forum-filler-image:
+    url("https://i.postimg.cc/dVfZyDPK/cat6-2.jpg");
+}
+
+#f20 {
+  --forum-filler-image:
+    url("https://i.postimg.cc/Gps8JrdR/cat1-2.jpg");
+}
+
+   #f86 {
+      --forum-filler-image:
+         url("https://i.postimg.cc/gk18dzgD/swipetest.jpg");
+   }
+   #f13 {
+      --forum-filler-image:
+         url("https://i.postimg.cc/JzPDTjsW/afreshstart.jpg");
+   }
+
+
+/* SOUS-FORUMS — MODE SOMBRE */
+
+&[data-color-scheme="dark"] #f7 {
+  --forum-filler-image:
+    url("https://i.postimg.cc/NGN3fSqF/londonpicadilly.png");
+}
+
+&[data-color-scheme="dark"] #f12 {
+  --forum-filler-image:
+    url("https://i.postimg.cc/XvcKNRPK/cat7.png");
+}
+
+&[data-color-scheme="dark"] #f18 {
+  --forum-filler-image:
+    url("https://i.postimg.cc/0y4Kwrgh/cat4.jpg");
+}
+
+&[data-color-scheme="dark"] #f17 {
+  --forum-filler-image:
+    url("https://i.postimg.cc/52rQCjd1/cat5.jpg");
+}
+
+&[data-color-scheme="dark"] #f20 {
+  --forum-filler-image:
+    url("https://i.postimg.cc/bv2DH887/cat1.jpg");
+}
+
+ &[data-color-scheme="dark"] #f86 {
+      --forum-filler-image:
+         url("https://i.postimg.cc/gk18dzgD/swipetest.jpg");
+   }
+   &[data-color-scheme="dark"] #f13 {
+      --forum-filler-image:
+         url("https://i.postimg.cc/JzPDTjsW/afreshstart.jpg");
+   }
+   
+/* GRILLE */
+
+.category .forums {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+    align-items: stretch;
+}
+
+/* Toutes les cartes conservent le même format demi-largeur,
+   y compris la dernière carte d'une liste impaire. */
+.category .forums > .forum,
+.category .forums > .forum:nth-child(odd):last-child {
+    grid-column: auto;
+    display: grid;
+    grid-template-columns: 76px minmax(0, 1fr);
+    grid-template-areas:
+        "heading heading"
+        "description description"
+        "stats lastpost"
+        "subforums subforums";
+    column-gap: 10px;
+    align-items: stretch;
+    min-width: 0;
+    height: 100%;
+    margin-bottom: 0;
+}
+
+/* LIGNE 1 TITRE ET ÉTAT DU FORUM */
+
+.category .forum > .forumtitle-box {
+    grid-area: heading;
+    min-width: 0;
+}
+
+.category .forumtitle-box-left {
+    min-width: 0;
+}
+
+.category .forumtitle-box-left .forumtitle {
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.category .forumtitle-box-right {
+    flex: 0 0 70px;
+}
+
+/* LIGNE 2 — DESCRIPTION */
+
+.category .forum > .forum_content {
+    grid-area: description;
+    flex: 0 0 80px;
+    width: 100%;
+    min-width: 0;
+    height: 80px;
+    overflow: hidden;
+}
+
+.category .forum_desc {
+    width: 100%;
+    min-width: 0;
+    max-width: 100%;
+    max-height: 80px;
+}
+
+/* LIGNE 3 STATISTIQUES */
+
+.category .forum > .forum_stats {
+    grid-area: stats;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    align-self: stretch;
+    gap: 2px;
+    float: none;
+    width: 76px;
+    min-width: 0;
+    height: 80px;
+    margin-top: 10px;
+    padding: 4px;
+    text-align: center;
+    background: transparent !important;
+    background-color: transparent !important;
+    background-image: none !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+}
+
+.category .forum > .forum_stats span {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 3px;
+    width: 100%;
+    line-height: 16px;
+    white-space: nowrap;
+}
+
+.category .forum > .forum_stats strong {
+    display: inline;
+    line-height: 16px;
+}
+
+/* LIGNE 3 AVATAR ET DERNIER MESSAGE */
+
+.category .forum > .forum_lastpost_row {
+    grid-area: lastpost;
+    display: flex;
+    align-items: stretch;
+    gap: 10px;
+    width: 100%;
+    min-width: 0;
+    height: 80px;
+    margin-top: 10px;
+}
+
+.category .forum_avatar {
+    flex: 0 0 70px;
+    width: 70px;
+    height: 80px;
+}
+
+.category .forum_lastpost {
+    display: flex;
+    flex: 1 1 auto;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: center;
+    width: auto;
+    min-width: 0;
+    height: 80px;
+    padding: 8px 10px;
+    overflow: hidden;
+}
+
+.category .forum_lastpost .lastpost_link {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
+    text-align: right;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.category .forum_lastpost .lastpost_meta {
+    display: block;
+    width: 100%;
+    min-width: 0;
+    text-align: right;
+}
+
+/* LIGNE 4 SOUS-FORUMS */
+
+.category .forum > .forum_details.forum_subforums {
+    grid-area: subforums;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    min-width: 0;
+    height: 38px;
+    min-height: 38px;
+    max-height: 38px;
+    margin-top: 6px;
+    padding: 0;
+    overflow: hidden;
+}
+
+.category .forum_subforums #subforum {
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center;
+    gap: 5px 0;
+    width: 100%;
+    min-width: 0;
+    max-height: 36px;
+    overflow: hidden;
+}
+
+/* Apparence des liens. */
+   
+.category .forum_details.forum_subforums #subforum a,
+.category .forum_details.forum_subforums #subforum a.gensmall,
+.category .forum_details.forum_subforums #subforum a:nth-child(2n) {
+    position: relative !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    width: auto !important;
+    margin: 0 12px 0 0 !important;
+    padding: 1px 0 !important;
+    color: var(--contrastLight) !important;
+    background: transparent !important;
+    background-color: transparent !important;
+    background-image: none !important;
+    border: 0 !important;
+    border-bottom: 0 !important;
+    border-radius: 0 !important;
+    outline: 0 !important;
+    box-shadow: none !important;
+    text-decoration: none !important;
+    font-size: var(--little-size) !important;
+    font-weight: 600 !important;
+    line-height: 16px !important;
+    text-transform: uppercase !important;
+    white-space: nowrap !important;
+    opacity: .78 !important;
+    transform: translateY(0) !important;
+    transition:
+        color .25s ease,
+        opacity .25s ease,
+        transform .25s ease !important;
+}
+
+/* Ligne de métro invisible. */
+   
+.category .forum_details.forum_subforums #subforum a::after {
+    content: "" !important;
+    position: absolute !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    display: block !important;
+    width: 100% !important;
+    height: 1px !important;
+    background: var(--gradient-one) !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    opacity: 0 !important;
+    transform: scaleX(0) !important;
+    transform-origin: left center !important;
+    transition:
+        opacity .25s ease,
+        transform .35s ease !important;
+}
+
+.category .forum_details.forum_subforums #subforum a:hover,
+.category .forum_details.forum_subforums #subforum a.gensmall:hover,
+.category .forum_details.forum_subforums #subforum a:nth-child(2n):hover {
+    color: var(--accentClr) !important;
+    background: transparent !important;
+    background-image: none !important;
+    border: 0 !important;
+    border-bottom: 0 !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    text-decoration: none !important;
+    opacity: 1 !important;
+    transform: translateY(-1px) !important;
+}
+
+.category .forum_details.forum_subforums #subforum a:hover::after {
+    opacity: 1 !important;
+    transform: scaleX(1) !important;
+}
+
+/* Réduction automatique à partir de cinq sous-forums. */
+.category .forum_details.forum_subforums #subforum:has(a:nth-of-type(5)) a {
+    margin-right: 6px !important;
+    padding: 1px 0 !important;
+    font-size: 10px !important;
+    line-height: 15px !important;
+}
+
+/* Réduction supplémentaire à partir de sept sous-forums. */
+.category .forum_details.forum_subforums #subforum:has(a:nth-of-type(7)) a {
+    margin-right: 4px !important;
+    padding: 0 !important;
+    font-size: 9px !important;
+    line-height: 14px !important;
+}
+
+/* CARTE DÉCORATIVE POUR CHAQUE CATÉGORIE IMPAIRE */
+
+.category .forums:has(> .forum:nth-child(odd):last-child)::after {
+    content: "";
+    display: block;
+    align-self: stretch;
+    width: 100%;
+    min-width: 0;
+    min-height: 0;
+    background-color: var(--neutralDark);
+    background-image:
+        linear-gradient(
+            rgba(23, 25, 56, .08),
+            rgba(23, 25, 56, .30)
+        ),
+        var(--forum-filler-image);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: var(--radius-normal);
+    opacity: .82;
+    filter: grayscale(40%);
+    overflow: hidden;
+    transition:
+        opacity .6s ease,
+        filter .6s ease,
+        background-position .8s ease;
+}
+
+/* ALTERNANCE PARMI LES CATÉGORIES AYANT UNE CASE VIDE 1re catégorie impaire rencontrée : image | forum 2e catégorie impaire rencontrée : forum | image 3e catégorie impaire rencontrée : image | forum etc. Les catégories contenant un nombre pair de forums sont ignorées dans ce comptage. */
+
+/* Position normale : image après le dernier forum. */
+.category .forums:has(> .forum:nth-child(odd):last-child)::after {
+    order: 1;
+}
+
+/* Pour la première catégorie éligible, puis une catégorie
+   éligible sur deux, le dernier forum passe après l'image. */
+.category:nth-child(
+    odd of .category:has(
+        > .forums > .forum:nth-child(odd):last-child
+    )
+)
+> .forums
+> .forum:nth-child(odd):last-child {
+    order: 2;
+}
+
+.category .forums:has(> .forum:nth-child(odd):last-child)::after:hover {
+    opacity: 1;
+    filter: grayscale(0%);
+    background-position: center 45%;
+}
+
+} /* FIN DU MODE DEUX COLONNES */
+
+   /* SUPPRESSION DU SAUT DE LIGNE */
+
+html[data-forum-layout="columns"]
+.category .forum > .forum_lastpost_row
+.forum_lastpost > span > a.lastpost_link,
+
+html[data-forum-layout="normal"]
+.category .forum > .forum_lastpost_row
+.forum_lastpost > span > a.lastpost_link {
+    display: block !important;
+
+    width: 100% !important;
+    max-width: 100% !important;
+
+    margin: 0 !important;
+    padding: 0 !important;
+
+    overflow: hidden !important;
+
+    line-height: 21px !important;
+    text-align: right !important;
+    text-overflow: ellipsis !important;
+    white-space: nowrap !important;
+}
+
+/* SWITCH DE DISPOSITION ICÔNE SEULE */
+
+.switcheroo__squircles > .forum-layout-toggle {
+    display: inline-flex !important;
+    flex: 0 0 35px !important;
+    align-items: center !important;
+    justify-content: center !important;
+
+    width: 35px !important;
+    min-width: 35px !important;
+    height: 35px !important;
+
+    margin: 0 !important;
+    padding: 0 !important;
+
+    /* Couleur visible par défaut */
+    color: var(--textColor) !important;
+
+    background: transparent !important;
+    background-color: transparent !important;
+    background-image: none !important;
+
+    border: 0 !important;
+    border-radius: 0 !important;
+    outline: 0 !important;
+    box-shadow: none !important;
+
+    appearance: none !important;
+    cursor: pointer !important;
+
+    position: relative !important;
+    inset: auto !important;
+
+    line-height: 1 !important;
+    vertical-align: middle !important;
+
+    transition: color .3s ease !important;
+}
+
+/* Couleur en mode clair */
+html[data-color-scheme="light"]
+.switcheroo__squircles
+> .forum-layout-toggle {
+    color: var(--contrastDark) !important;
+}
+
+/* Couleur en mode sombre */
+html[data-color-scheme="dark"]
+.switcheroo__squircles
+> .forum-layout-toggle {
+    color: var(--contrastLight) !important;
+}
+
+/* Icône Font Awesome */
+.switcheroo__squircles
+> .forum-layout-toggle
+.fa-grip-lines {
+    display: block !important;
+
+    color: inherit !important;
+
+    font-size: 18px !important;
+    line-height: 1 !important;
+
+    transform: rotate(0deg) !important;
+
+    transition:
+        transform .35s ease,
+        color .3s ease !important;
+}
+
+/* Mode deux colonnes : icône verticale */
+html[data-forum-layout="columns"]
+.switcheroo__squircles
+> .forum-layout-toggle
+.fa-grip-lines {
+    transform: rotate(90deg) !important;
+}
+
+/* Mode normal : icône horizontale */
+html[data-forum-layout="normal"]
+.switcheroo__squircles
+> .forum-layout-toggle
+.fa-grip-lines {
+    transform: rotate(0deg) !important;
+}
+
+/* Survol */
+.switcheroo__squircles
+> .forum-layout-toggle:hover {
+    color: var(--accentClr) !important;
+
+    background: transparent !important;
+    background-color: transparent !important;
+    background-image: none !important;
+
+    border: 0 !important;
+    box-shadow: none !important;
+}
+
+/* Mode actif : conserve une couleur lisible */
+.switcheroo__squircles
+> .forum-layout-toggle[aria-pressed="true"] {
+    color: var(--textColor) !important;
+
+    background: transparent !important;
+    background-color: transparent !important;
+    background-image: none !important;
+
+    border: 0 !important;
+    box-shadow: none !important;
+}
+
+/* Mode actif en thème clair */
+html[data-color-scheme="light"]
+.switcheroo__squircles
+> .forum-layout-toggle[aria-pressed="true"] {
+    color: var(--contrastDark) !important;
+}
+
+/* Mode actif en thème sombre */
+html[data-color-scheme="dark"]
+.switcheroo__squircles
+> .forum-layout-toggle[aria-pressed="true"] {
+    color: var(--contrastLight) !important;
+}
+
+/* Suppression des effets au clic */
+.switcheroo__squircles
+> .forum-layout-toggle:focus,
+.switcheroo__squircles
+> .forum-layout-toggle:active {
+    background: transparent !important;
+    border: 0 !important;
+    outline: 0 !important;
+    box-shadow: none !important;
+}
+
+/* Couleur de survol prioritaire, même quand le bouton est actif */
+html[data-color-scheme]
+.switcheroo__squircles
+> .forum-layout-toggle[aria-pressed="true"]:hover {
+    color: var(--accentClr) !important;
+}
+/* MODE NORMAL */
+
+html[data-forum-layout="normal"] .category .forums {
+    display: block;
+}
+
+html[data-forum-layout="normal"] .category .forums::before,
+html[data-forum-layout="normal"] .category .forums::after {
+    display: none !important;
+    content: none !important;
+}
+
+html[data-forum-layout="normal"] .category .forums > .forum,
+html[data-forum-layout="normal"] .category .forums > .forum:nth-child(odd):last-child {
+    display: grid;
+    grid-column: auto;
+    grid-template-columns: minmax(0, 1fr) 280px;
+    grid-template-areas:
+        "heading heading"
+        "description lastpost"
+        "subforums stats";
+    gap: 0 10px;
+    width: 100%;
+    height: auto;
+    margin-bottom: 10px;
+}
+
+html[data-forum-layout="normal"] .category .forums > .forum:last-child {
+    margin-bottom: 0;
+}
+
+html[data-forum-layout="normal"] .category .forum > .forumtitle-box {
+    grid-area: heading;
+}
+
+html[data-forum-layout="normal"] .category .forum > .forum_content {
+    grid-area: description;
+    width: 100%;
+    height: 80px;
+    min-height: 80px;
+    max-height: 80px;
+    margin-top: 10px;
+}
+
+html[data-forum-layout="normal"] .category .forum > .forum_lastpost_row {
+    grid-area: lastpost;
+    display: flex;
+    align-items: stretch;
+    gap: 10px;
+    width: 280px;
+    height: 80px;
+    margin-top: 10px;
+}
+
+html[data-forum-layout="normal"] .category .forum > .forum_lastpost_row .forum_avatar {
+    flex: 0 0 70px;
+    width: 70px;
+    height: 80px;
+}
+
+html[data-forum-layout="normal"] .category .forum > .forum_lastpost_row .forum_lastpost {
+    flex: 0 0 200px;
+    width: 200px;
+    height: 80px;
+}
+
+html[data-forum-layout="normal"] .category .forum > .forum_details.forum_subforums {
+    grid-area: subforums;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: auto;
+    min-height: 31px;
+    max-height: none;
+    margin-top: 10px;
+    padding-top: 10px;
+    overflow: visible;
+}
+
+html[data-forum-layout="normal"] .category .forum > .forum_stats {
+    grid-area: stats;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 0;
+    width: auto;
+    height: auto;
+    min-height: 31px;
+    margin-top: 10px;
+    padding: 2px 8px;
+    text-align: right;
+    background: var(--neutralDark) !important;
+    background-color: var(--neutralDark) !important;
+    background-image: none !important;
+    border-radius: 0 !important;
+}
+
+html[data-forum-layout="normal"] .category .forum > .forum_stats span {
+    display: inline;
+    width: auto;
+    line-height: inherit;
+    white-space: nowrap;
+}
+
+html[data-forum-layout="normal"] .category .forum > .forum_stats span + span::before {
+    content: " • ";
+    margin: 0 5px;
+}
+
+html[data-forum-layout="normal"] .category .forum > .forum_stats strong {
+    display: inline;
+    line-height: inherit;
+}
+
+html[data-forum-layout="normal"] .category .forum_subforums #subforum {
+    display: block;
+    width: auto;
+    max-height: none;
+    overflow: visible;
+}
+
+html[data-forum-layout="normal"] .category .forum_subforums #subforum a {
+    display: inline-flex !important;
+    width: auto !important;
+    margin: 0 10px 0 0 !important;
+    padding: 2px 8px !important;
+    color: var(--stay-white) !important;
+    background: linear-gradient(.07turn, var(--one), var(--two)) !important;
+    border: 0 !important;
+    border-radius: var(--radius-mini) !important;
+    box-shadow: none !important;
+    font-size: var(--little-size) !important;
+    line-height: inherit !important;
+    opacity: 1 !important;
+    text-decoration: none !important;
+    text-transform: uppercase !important;
+    transform: none !important;
+}
+
+html[data-forum-layout="normal"] .category .forum_subforums #subforum a:nth-child(2n) {
+    background: linear-gradient(.07turn, var(--three), var(--one)) !important;
+}
+
+html[data-forum-layout="normal"] .category .forum_subforums #subforum a:hover {
+    color: var(--stay-white) !important;
+    background: linear-gradient(.07turn, var(--two), var(--three)) !important;
+    opacity: 1 !important;
+    transform: none !important;
+}
+
+html[data-forum-layout="normal"] .category .forum_subforums #subforum a::after {
+    display: none !important;
+    content: none !important;
+}
+
+/* ======== CSS NOUVEAU DIRECTORY MEMBER LIST ============== */
+
+.directory-toolbar {
+  display: grid;
+  gap: 1rem;
+  margin: 1rem 0 2rem;
+}
+
+.directory-filter {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .4rem;
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+
+.directory-filter legend {
+  width: 100%;
+  font-weight: 700;
+  margin-bottom: .25rem;
+}
+
+.directory-filter button,
+.directory-pagination button {
+  padding: .45rem .7rem;
+  border: 1px solid currentColor;
+  border-radius: .35rem;
+  cursor: pointer;
+}
+
+.directory-filter button.is-active,
+.directory-pagination button.is-active {
+  font-weight: 700;
+  text-decoration: underline;
+}
+
+.directory-search,
+.directory-sort {
+  display: grid;
+  gap: .3rem;
+  max-width: 24rem;
+}
+
+.directory-search input,
+.directory-sort select {
+  padding: .55rem .7rem;
+}
+
+.directory-pagination {
+  display: flex;
+  justify-content: center;
+  gap: .4rem;
+  margin-top: 1.5rem;
+}
+
+.directory-member[hidden] {
+  display: none !important;
+}
+
+.directory-faceclaim {
+  display: inline-block;
+  margin-top: .35rem;
+}
+
+/* Formulaire intégré à la fiche */
+.directory-form {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+  height: auto !important;
+  min-height: 2.75rem !important;
+  margin-top: .5rem;
+  border: 1px solid color-mix(in srgb, currentColor 18%, transparent);
+  border-radius: .35rem;
+  overflow: visible !important;
+}
+
+.directory-form-toggle {
+  display: flex;
+  align-items: center;
+  gap: .45rem;
+  box-sizing: border-box;
+  width: 100%;
+  padding: .5rem .6rem .5rem .5rem;
+  cursor: pointer;
+  font-size: .72rem;
+  font-weight: 700;
+  letter-spacing: .05em;
+  text-transform: uppercase;
+  list-style: none;
+  background: color-mix(in srgb, currentColor 6%, transparent);
+  box-shadow: inset 3px 0 0 color-mix(in srgb, currentColor 55%, transparent);
+  transition: background-color .2s ease, box-shadow .2s ease;
+}
+
+.directory-form-toggle::-webkit-details-marker {
+  display: none;
+}
+
+.directory-form-toggle:hover {
+  background: color-mix(in srgb, currentColor 11%, transparent);
+  box-shadow: inset 3px 0 0 currentColor;
+}
+
+.directory-form-toggle:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: -2px;
+}
+
+.directory-form-toggle > i {
+  display: inline-grid;
+  place-items: center;
+  flex: 0 0 1.65rem;
+  width: 1.65rem;
+  height: 1.65rem;
+  border-radius: 50%;
+  background: color-mix(in srgb, currentColor 12%, transparent);
+  font-size: .72rem;
+}
+
+.directory-form-toggle > span {
+  line-height: 1.15;
+}
+
+.directory-form-toggle::after {
+  content: '+';
+  display: inline-grid;
+  place-items: center;
+  flex: 0 0 1.25rem;
+  width: 1.25rem;
+  height: 1.25rem;
+  margin-left: auto;
+  border: 1px solid color-mix(in srgb, currentColor 35%, transparent);
+  border-radius: 50%;
+  font-size: .9rem;
+  line-height: 1;
+  font-weight: 600;
+}
+
+.directory-form[open] > .directory-form-toggle::after {
+  content: '−';
+}
+
+.directory-form[open] > .directory-form-toggle {
+  background: color-mix(in srgb, currentColor 10%, transparent);
+  border-bottom: 1px solid color-mix(in srgb, currentColor 15%, transparent);
+  box-shadow: inset 3px 0 0 currentColor;
+}
+
+.directory-form-panel {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+  padding: 0 .55rem .55rem;
+}
+
+.directory-form-intro {
+  margin: .15rem 0 .45rem;
+  font-size: .66rem;
+  line-height: 1.3;
+  opacity: .65;
+}
+
+.directory-form-panel > .fiche-bloc {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+  margin-top: .45rem;
+}
+
+.directory-form-panel .directory-value {
+  overflow-wrap: anywhere;
+}
+
+.directory-avatar {
+  position: relative;
+  overflow: hidden;
+}
+
+.directory-summary {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  padding: 1rem;
+  overflow: auto;
+  background: color-mix(in srgb, var(--neutralDark, #171717) 90%, transparent);
+  color: var(--neutral, #fff);
+  font-size: .85rem;
+  line-height: 1.5;
+  text-align: left;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(.5rem);
+  transition: opacity .2s ease, transform .2s ease, visibility .2s ease;
+}
+
+.directory-avatar:hover .directory-summary,
+.directory-avatar:focus .directory-summary,
+.directory-avatar:focus-within .directory-summary {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+/* Cartes verticales : avatar + pseudo au repos, informations au survol */
+.directory-list {
+  display: grid !important;
+  grid-template-columns: repeat(auto-fill, minmax(175px, 1fr)) !important;
+  gap: 1rem !important;
+  align-items: stretch;
+}
+
+.directory-list .directory-member {
+  position: relative !important;
+  display: block !important;
+  box-sizing: border-box;
+  width: 100% !important;
+  min-width: 0 !important;
+  aspect-ratio: 2 / 3;
+  min-height: 285px;
+  padding: 0 !important;
+  overflow: hidden !important;
+  border-radius: var(--radius-medium, 10px);
+  isolation: isolate;
+}
+
+/* Doit rester après la règle d'affichage des cartes : les filtres utilisent
+   l'attribut hidden pour retirer les membres qui ne correspondent pas. */
+.directory-list .directory-member[hidden] {
+  display: none !important;
+}
+
+.directory-list .directory-avatar {
+  position: absolute !important;
+  inset: 0;
+  width: 100% !important;
+  height: 100% !important;
+  min-height: 0 !important;
+  overflow: hidden;
+}
+
+.directory-list .directory-avatar > img {
+  display: block;
+  width: 100% !important;
+  height: 100% !important;
+  max-width: none !important;
+  max-height: none !important;
+  object-fit: cover;
+  object-position: center top;
+  transition: transform .35s ease, filter .35s ease;
+}
+
+.directory-list .userlist_details {
+  position: absolute !important;
+  z-index: 3;
+  inset: 0;
+  display: flex !important;
+  flex-direction: column;
+  box-sizing: border-box;
+  width: auto !important;
+  height: auto !important;
+  min-width: 0 !important;
+  padding: .9rem !important;
+  pointer-events: none;
+  background: linear-gradient(to bottom, transparent 45%, rgba(8, 6, 13, .92) 100%);
+  transition: background .3s ease;
+}
+
+.directory-list .userlist_pseudo {
+  display: block !important;
+  margin-top: auto;
+  padding: .55rem .65rem;
+  text-align: center;
+  background: rgba(16, 12, 24, .82);
+  backdrop-filter: blur(4px);
+  transition: margin .3s ease, background .3s ease;
+  pointer-events: auto;
+}
+
+.directory-list .directory-profile-link {
+  display: block;
+  overflow-wrap: anywhere;
+}
+
+.directory-list .userlist_infos {
+  max-height: 0;
+  margin-top: 0;
+  overflow: hidden;
+  font-size: .72rem;
+  line-height: 1.45;
+  opacity: 0;
+  transform: translateY(.75rem);
+  transition: max-height .35s ease, margin .35s ease, opacity .25s ease, transform .35s ease;
+}
+
+.directory-list .userlist_contact {
+  display: none !important;
+}
+
+.directory-list .directory-summary {
+  z-index: 4;
+  inset: 4.25rem .75rem 7.75rem;
+  align-items: center;
+  padding: .75rem;
+  overflow-x: hidden;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scrollbar-width: thin;
+  scrollbar-color: var(--accentClr, #c97a64) rgba(255, 255, 255, .12);
+  background: rgba(10, 8, 16, .94);
+  backdrop-filter: blur(3px);
+  color: var(--contrast, #f4effa) !important;
+  font-size: .75rem;
+  line-height: 1.4;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, .9);
+  border-radius: var(--radius-small, 6px);
+  pointer-events: none;
+}
+
+.directory-list .directory-summary::-webkit-scrollbar {
+  width: 5px;
+}
+
+.directory-list .directory-summary::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, .1);
+  border-radius: 99px;
+}
+
+.directory-list .directory-summary::-webkit-scrollbar-thumb {
+  background: var(--accentClr, #c97a64);
+  border-radius: 99px;
+}
+
+.directory-list .directory-member:hover .directory-avatar > img,
+.directory-list .directory-member:focus-within .directory-avatar > img {
+  transform: scale(1.04);
+  filter: brightness(.5);
+}
+
+.directory-list .directory-member:hover .userlist_details,
+.directory-list .directory-member:focus-within .userlist_details {
+  background: linear-gradient(to bottom, rgba(8, 6, 13, .76), rgba(8, 6, 13, .96));
+}
+
+.directory-list .directory-member:hover .userlist_pseudo,
+.directory-list .directory-member:focus-within .userlist_pseudo {
+  margin-top: 0;
+  background: transparent;
+}
+
+.directory-list .directory-member:hover .userlist_infos,
+.directory-list .directory-member:focus-within .userlist_infos {
+  max-height: 11rem;
+  margin-top: auto;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.directory-list .directory-member:hover .directory-summary,
+.directory-list .directory-member:focus-within .directory-summary {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+@media (max-width: 600px) {
+  .directory-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: .65rem !important;
+  }
+
+  .directory-list .directory-member {
+    min-height: 240px;
+  }
+}
+
+/* Contrastes explicites pour le thème clair */
+html[data-color-scheme="light"] .directory-filter button,
+html[data-color-scheme="light"] .directory-alphabet button,
+html[data-color-scheme="light"] .directory-pagination button {
+  color: var(--textColorAccent, #312854) !important;
+  opacity: .78;
+}
+
+html[data-color-scheme="light"] .directory-filter button:hover,
+html[data-color-scheme="light"] .directory-alphabet button:hover,
+html[data-color-scheme="light"] .directory-pagination button:hover,
+html[data-color-scheme="light"] .directory-filter button:focus-visible,
+html[data-color-scheme="light"] .directory-alphabet button:focus-visible,
+html[data-color-scheme="light"] .directory-pagination button:focus-visible,
+html[data-color-scheme="light"] .directory-filter button.is-active,
+html[data-color-scheme="light"] .directory-alphabet button.is-active,
+html[data-color-scheme="light"] .directory-pagination button.is-active {
+  color: var(--accentClr, #4b57c5) !important;
+  opacity: 1;
+}
+
+html[data-color-scheme="light"] .directory-search input,
+html[data-color-scheme="light"] .directory-sort select {
+  border-bottom-color: var(--accentClr, #4b57c5) !important;
+  color: var(--textColor, #3a3430) !important;
+}
+
+/* Carte publique publiée dans le sujet-registre */
+.directory-registry-card {
+  box-sizing: border-box;
+  width: min(100%, 720px);
+  margin: 1rem auto;
+  overflow: hidden;
+}
+
+.directory-registry-heading {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid color-mix(in srgb, var(--accentClr, #c97a64) 32%, transparent);
+}
+
+.directory-registry-icon {
+  display: grid;
+  flex: 0 0 3.25rem;
+  width: 3.25rem;
+  height: 3.25rem;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--accentClr, #c97a64);
+  color: #fff;
+  font-size: 1.25rem;
+}
+
+.directory-registry-kicker {
+  color: var(--accentLight, #8c839e);
+  font-size: .7rem;
+  font-weight: 800;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+}
+
+.directory-registry-heading h2 {
+  margin: .1rem 0;
+  color: var(--textColorAccent, var(--accentClr, #c97a64));
+  font-size: 1.45rem;
+  line-height: 1.1;
+}
+
+.directory-registry-heading p,
+.directory-registry-summary p {
+  margin: 0;
+}
+
+.directory-registry-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: .65rem;
+  margin-top: 1rem;
+}
+
+.directory-registry-grid > div,
+.directory-registry-summary {
+  padding: .7rem .8rem;
+  border-radius: var(--radius-small, 7px);
+  background: color-mix(in srgb, var(--neutral, #151120) 72%, transparent);
+}
+
+.directory-registry-grid strong,
+.directory-registry-summary strong {
+  display: block;
+  margin-bottom: .2rem;
+  color: var(--accentLight, #8c839e);
+  font-size: .68rem;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+}
+
+.directory-registry-grid span {
+  display: block;
+  overflow-wrap: anywhere;
+}
+
+.directory-registry-summary {
+  margin-top: .65rem;
+  line-height: 1.55;
+}
+
+.directory-registry-welcome {
+  margin-top: 1rem;
+}
+
+.directory-registry-welcome > p {
+  margin: .85rem 0 0;
+  text-align: center;
+}
+
+.directory-registry-section-title {
+  margin: 1rem 0 .35rem;
+}
+
+.directory-registry-card .fiche-simple-titre,
+.directory-registry-card .fiche-st {
+  box-sizing: border-box;
+}
+
+.directory-registry-summary .fiche-st {
+  margin-bottom: .65rem;
+}
+
+.directory-registry-summary p {
+  max-height: 9rem;
+  overflow: auto;
+}
+
+.directory-record-data {
+  display: none !important;
+}
+
+html[data-color-scheme="light"] .directory-registry-grid > div,
+html[data-color-scheme="light"] .directory-registry-summary {
+  background: color-mix(in srgb, var(--accentLight, #c3c8f3) 30%, transparent);
+}
+
+html[data-color-scheme="light"] .directory-registry-heading h2,
+html[data-color-scheme="light"] .directory-registry-grid strong,
+html[data-color-scheme="light"] .directory-registry-summary strong,
+html[data-color-scheme="light"] .directory-registry-kicker {
+  color: var(--textColorAccent, #312854);
+}
+
+@media (max-width: 600px) {
+  .directory-registry-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* Les panneaux sont toujours sombres sur les photos : leur texte doit rester
+   clair dans les deux thèmes, indépendamment de --contrast. */
+.directory-list .userlist_details,
+.directory-list .userlist_infos,
+.directory-list .directory-summary,
+.directory-list .directory-faceclaim,
+.directory-list .directory-profile-link {
+  color: #f6f1ff !important;
+}
+
+/* Les couleurs natives des groupes Forumactif sont portées par les enfants
+   .group-* du lien : ne jamais les écraser avec !important. */
+.directory-list .directory-profile-link [class*="group-"] {
+  color: inherit;
+}
+
+.directory-list .directory-summary {
+  scrollbar-color: var(--accentClr, #c97a64) rgba(255, 255, 255, .18);
+}
+
+/* Filtres compacts, transparents et compatibles avec les thèmes clair/sombre */
+.directory-toolbar {
+  gap: .35rem !important;
+  margin: .75rem 0 1.25rem !important;
+  color: var(--textColor, currentColor);
+}
+
+.directory-filter,
+.directory-alphabet {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: .15rem .5rem;
+  min-width: 0;
+  margin: 0 !important;
+  padding: .2rem 0 !important;
+  border: 0 !important;
+  background: transparent !important;
+}
+
+.directory-filter legend,
+.directory-alphabet legend {
+  flex: 0 0 7.5rem;
+  width: auto !important;
+  margin: 0 !important;
+  padding: 0;
+  color: var(--textColor, currentColor);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+}
+
+.directory-filter button,
+.directory-alphabet button,
+.directory-pagination button {
+  appearance: none;
+  min-width: 0;
+  margin: 0 !important;
+  padding: .1rem .12rem !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  outline-offset: 3px;
+  background: transparent !important;
+  color: var(--accentLight, var(--accentClr, currentColor)) !important;
+  font: inherit;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.35;
+  text-decoration: none !important;
+  opacity: .84;
+  cursor: pointer;
+  transition: color .18s ease, opacity .18s ease, transform .18s ease;
+}
+
+.directory-filter button:hover,
+.directory-alphabet button:hover,
+.directory-pagination button:hover,
+.directory-filter button:focus-visible,
+.directory-alphabet button:focus-visible,
+.directory-pagination button:focus-visible {
+  color: var(--textColorAccent, var(--accentClr, currentColor)) !important;
+  opacity: 1;
+}
+
+.directory-filter button.is-active,
+.directory-alphabet button.is-active,
+.directory-pagination button.is-active {
+  color: var(--accentClr, var(--textColorAccent, currentColor)) !important;
+  font-weight: 800;
+  opacity: 1;
+  transform: translateY(-1px);
+}
+
+.directory-filter button.is-active::after,
+.directory-alphabet button.is-active::after {
+  content: '';
+  display: block;
+  height: 1px;
+  margin-top: 1px;
+  background: currentColor;
+}
+
+.directory-search,
+.directory-sort {
+  display: flex !important;
+  align-items: center;
+  gap: .65rem !important;
+  max-width: none !important;
+  padding: .2rem 0;
+}
+
+.directory-search > span,
+.directory-sort > span {
+  flex: 0 0 7.5rem;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+}
+
+.directory-search input,
+.directory-sort select {
+  width: min(100%, 24rem);
+  padding: .2rem 0 !important;
+  border: 0 !important;
+  border-bottom: 1px solid var(--accentLight, var(--accentClr, currentColor)) !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  color: var(--textColor, currentColor) !important;
+  font-size: 14px;
+}
+
+@media (max-width: 600px) {
+  .directory-filter legend,
+  .directory-alphabet legend,
+  .directory-search > span,
+  .directory-sort > span {
+    flex-basis: 100%;
+    margin-bottom: .15rem !important;
+  }
+
+  .directory-search,
+  .directory-sort {
+    flex-wrap: wrap;
+  }
+}
+
+/* Bouton administrateur de validation des fiches */
+#validationBtn.validation-button {
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: .3rem;
+  margin: .35rem 0 .35rem 1rem;
+  padding: .24rem .55rem;
+  vertical-align: middle;
+  border: 1px solid color-mix(in srgb, var(--accentClr, #a86f67) 78%, transparent);
+  border-radius: var(--radius-small, 7px);
+  background: var(--accentClr, #a86f67);
+  color: #fff;
+  font: inherit;
+  font-size: .7rem;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  cursor: pointer;
+  box-shadow: none;
+  transition: background-color .2s ease, border-color .2s ease,
+    color .2s ease, transform .2s ease, opacity .2s ease;
+}
+
+#validationBtn.validation-button::before {
+  content: "✓";
+  display: inline-grid;
+  width: .85rem;
+  height: .85rem;
+  place-items: center;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, .18);
+  font-size: .58rem;
+}
+
+#validationBtn.validation-button:hover:not(:disabled) {
+  background: var(--textColorAccent, var(--accentClr, #a86f67));
+  border-color: var(--textColorAccent, var(--accentClr, #a86f67));
+  transform: translateY(-1px);
+}
+
+#validationBtn.validation-button:focus-visible {
+  outline: 2px solid var(--accentLight, var(--accentClr, #a86f67));
+  outline-offset: 3px;
+}
+
+#validationBtn.validation-button:disabled {
+  opacity: .58;
+  cursor: wait;
+  transform: none;
+}
+
+@media (max-width: 600px) {
+  #validationBtn.validation-button {
+    margin-left: .65rem;
+    padding-inline: .5rem;
+  }
+}
+
+/* TINDER FORUM F25*/
+
+.tinder-app,
+.tinder-app *,
+body.tinder-auto-topic .tinder-auto-post,
+body.tinder-auto-topic .tinder-auto-post * {
+  box-sizing: border-box;
+}
+
+/* APPLICATION TINDER */
+
+.tinder-app {
+  width: 390px;
+  max-width: 100%;
+  margin: 0 auto;
+  overflow: hidden;
+  position: relative;
+  border-radius: 22px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* IDENTITÉ CRUSH HOUR */
+
+.tinder-brand {
+  min-height: 58px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 9px 15px 8px;
+}
+
+.tinder-brand-name {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  color: #fd267a;
+  font-size: 20px;
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -.8px;
+  text-transform: lowercase;
+}
+
+.tinder-brand-name i {
+  font-size: 15px;
+  transform: rotate(-8deg);
+}
+
+.tinder-brand-tagline {
+  margin-top: 5px;
+  font-size: 7px;
+  font-weight: 600;
+  line-height: 1;
+  text-transform: uppercase;
+  letter-spacing: 1.4px;
+  opacity: .5;
+}
+
+/* Mode sombre */
+
+html[data-color-scheme="dark"] .tinder-brand {
+  background: #17151b;
+  border-bottom: 1px solid rgba(255,255,255,.08);
+}
+
+/* Mode clair */
+
+html[data-color-scheme="light"] .tinder-brand {
+  background: #fff;
+  border-bottom: 1px solid #ededee;
+}
+
+/* ÉCRAN IT’S A MATCH  */
+
+.tinder-match {
+  height: auto;
+  min-height: 0;
+  padding: 32px 22px 25px;
+  text-align: center;
+}
+
+.tinder-match-title {
+  width: max-content;
+  max-width: 100%;
+  margin: 0 auto 13px;
+  color: #fd267a;
+  font-size: 36px;
+  font-weight: 900;
+  font-style: italic;
+  line-height: 1;
+  letter-spacing: -2px;
+  transform: rotate(-4deg);
+}
+
+.tinder-match-subtitle {
+  max-width: 285px;
+  margin: 0 auto 26px;
+  font-size: 11px;
+  font-weight: 400;
+  line-height: 1.55;
+}
+
+.tinder-match-profiles {
+  height: 145px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+}
+
+.tinder-match-profile {
+  width: 125px;
+  height: 125px;
+  overflow: hidden;
+  position: absolute;
+  background: #eee;
+  border: 4px solid #fff;
+  border-radius: 50%;
+  box-shadow: 0 5px 14px rgba(0,0,0,.13);
+}
+
+.tinder-match-profile:first-child {
+  margin-left: -88px;
+  transform: rotate(-7deg);
+}
+
+.tinder-match-profile:last-child {
+  margin-left: 88px;
+  transform: rotate(7deg);
+}
+
+.tinder-match-profile img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  filter: none;
+}
+
+/* Cœur entre les profils */
+
+.tinder-match-heart {
+  width: 43px;
+  height: 43px;
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  background: #fd267a;
+  border: 3px solid #fff;
+  border-radius: 50%;
+  box-shadow: 0 3px 9px rgba(0,0,0,.14);
+  font-size: 16px;
+  transform: rotate(-7deg);
+}
+
+/* Bouton principal */
+
+.tinder-match-button {
+  display: block;
+  width: 88%;
+  margin: 25px auto 0;
+  padding: 12px 18px;
+  color: #fff;
+  background: #fd267a;
+  border: 0;
+  border-radius: 30px;
+  font-size: 10px;
+  font-weight: 800;
+  line-height: 1.2;
+  text-transform: uppercase;
+  letter-spacing: .8px;
+}
+
+.tinder-match-button:hover {
+  background: #e91e63;
+}
+
+.tinder-match-note {
+  margin: 13px 0 0;
+  font-size: 9px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .6px;
+}
+
+/* ÉCRAN DU MATCH MODE DARK */
+
+html[data-color-scheme="dark"] .tinder-app {
+  color: #f5f5f7;
+  background: #17151b;
+  border: 1px solid rgba(255,255,255,.09);
+  box-shadow: 0 8px 24px rgba(0,0,0,.22);
+}
+
+html[data-color-scheme="dark"] .tinder-match {
+  color: #f5f5f7;
+  background: #1d1a20;
+}
+
+html[data-color-scheme="dark"] .tinder-match-title {
+  color: #fd267a;
+}
+
+html[data-color-scheme="dark"] .tinder-match-subtitle {
+  color: #aaa7ae;
+}
+
+html[data-color-scheme="dark"] .tinder-match-note {
+  color: #77737c;
+}
+
+html[data-color-scheme="dark"] .tinder-match-profile {
+  border-color: #1d1a20;
+  box-shadow:
+    0 0 0 2px #fd267a,
+    0 5px 14px rgba(0,0,0,.22);
+}
+
+/* ÉCRAN DU MATCH MODE LIGHT */
+
+html[data-color-scheme="light"] .tinder-app {
+  color: #242429;
+  background: #fff;
+  border: 1px solid #e6e6e8;
+  box-shadow: 0 8px 24px rgba(20,20,25,.09);
+}
+
+html[data-color-scheme="light"] .tinder-match {
+  color: #242429;
+  background: #fafafa;
+}
+
+html[data-color-scheme="light"] .tinder-match-title {
+  color: #fd267a;
+}
+
+html[data-color-scheme="light"] .tinder-match-subtitle {
+  color: #55555b;
+}
+
+html[data-color-scheme="light"] .tinder-match-note {
+  color: #8b8b91;
+}
+
+html[data-color-scheme="light"] .tinder-match-profile {
+  border-color: #fafafa;
+  box-shadow:
+    0 0 0 2px #fd267a,
+    0 5px 14px rgba(0,0,0,.1);
+}
+
+/* PREMIER POST OUVERTURE DU MATCH */
+
+body.tinder-auto-topic .tinder-auto-opening {
+  display: block !important;
+  width: 430px !important;
+  max-width: calc(100% - 30px) !important;
+  min-height: 0 !important;
+  height: auto !important;
+  margin: 20px auto 30px !important;
+  padding: 0 !important;
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+}
+
+/* Masque le profil Forumactif */
+
+body.tinder-auto-topic
+.tinder-auto-opening > .post_head,
+
+body.tinder-auto-topic
+.tinder-auto-opening > .post_profile {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+  min-height: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+}
+
+/* Conteneur de l’ouverture */
+
+body.tinder-auto-topic
+.tinder-auto-opening > .post_message {
+  display: flex !important;
+  flex-direction: column !important;
+  width: 100% !important;
+  max-width: none !important;
+  min-height: 0 !important;
+  height: auto !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  position: static !important;
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+}
+
+body.tinder-auto-topic
+.tinder-auto-opening .postbody.content {
+  order: 1 !important;
+  display: block !important;
+  width: 100% !important;
+  min-height: 0 !important;
+  height: auto !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+}
+
+/* Outils sous l’ouverture */
+
+body.tinder-auto-topic
+.tinder-auto-opening .post_details {
+  order: 2 !important;
+  align-self: center !important;
+  width: 390px !important;
+  max-width: 100% !important;
+  margin: 5px auto 0 !important;
+}
+
+/* PUBLICATIONS DE LA CONVERSATION */
+
+body.tinder-auto-topic .tinder-auto-post {
+  display: flex !important;
+  grid-template-columns: none !important;
+  grid-template-rows: none !important;
+  width: 500px !important;
+  max-width: calc(100% - 30px) !important;
+  min-height: 0 !important;
+  height: auto !important;
+  align-items: flex-end !important;
+  gap: 9px !important;
+  margin: 4px auto !important;
+  padding: 8px 15px !important;
+  position: relative !important;
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+}
+
+/* Masque le grand profil et son avatar */
+
+body.tinder-auto-topic
+.tinder-auto-post > .post_head,
+
+body.tinder-auto-topic
+.tinder-auto-post > .post_profile {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+  min-height: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+}
+
+/* PETIT AVATAR ROND */
+
+body.tinder-auto-topic
+.tinder-auto-post > .tinder-auto-avatar {
+  display: block !important;
+  width: 34px !important;
+  height: 34px !important;
+  min-width: 34px !important;
+  flex: 0 0 34px !important;
+  margin: 0 0 20px !important;
+  padding: 0 !important;
+  object-fit: cover !important;
+  object-position: center !important;
+  background: var(--neutralDark) !important;
+  border: 2px solid #fff !important;
+  border-radius: 50% !important;
+  box-shadow: 0 3px 9px rgba(0,0,0,.15);
+}
+
+/* CONTENEUR DU MESSAGE */
+
+body.tinder-auto-topic
+.tinder-auto-post > .post_message {
+  display: flex !important;
+  grid-column: auto !important;
+  grid-row: auto !important;
+  flex-direction: column !important;
+  width: auto !important;
+  max-width: 72% !important;
+  min-height: 0 !important;
+  height: auto !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  position: static !important;
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+}
+
+/* POSITION GAUCHE */
+
+body.tinder-auto-topic .tinder-auto-left {
+  justify-content: flex-start !important;
+}
+
+body.tinder-auto-topic
+.tinder-auto-left > .tinder-auto-avatar {
+  order: 1 !important;
+}
+
+body.tinder-auto-topic
+.tinder-auto-left > .post_message {
+  order: 2 !important;
+  align-items: flex-start !important;
+}
+
+/* POSITION DROITE */
+
+body.tinder-auto-topic .tinder-auto-right {
+  justify-content: flex-end !important;
+}
+
+body.tinder-auto-topic
+.tinder-auto-right > .tinder-auto-avatar {
+  order: 2 !important;
+}
+
+body.tinder-auto-topic
+.tinder-auto-right > .post_message {
+  order: 1 !important;
+  align-items: flex-end !important;
+}
+
+/* PSEUDO ET DATE */
+
+body.tinder-auto-topic
+.tinder-auto-post .tinder-auto-infos {
+  order: 1 !important;
+  display: flex !important;
+  align-items: center !important;
+  width: auto !important;
+  margin: 0 7px 4px !important;
+  gap: 6px !important;
+  font-size: 8px !important;
+  line-height: 1.2 !important;
+}
+
+body.tinder-auto-topic
+.tinder-auto-post .tinder-auto-author {
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .6px;
+  opacity: .7;
+}
+
+body.tinder-auto-topic
+.tinder-auto-post .tinder-auto-date {
+  opacity: .45;
+}
+
+body.tinder-auto-topic
+.tinder-auto-right .tinder-auto-infos {
+  flex-direction: row-reverse !important;
+}
+
+html[data-color-scheme="dark"]
+body.tinder-auto-topic .tinder-auto-infos {
+  color: rgba(255,255,255,.62);
+}
+
+html[data-color-scheme="light"]
+body.tinder-auto-topic .tinder-auto-infos {
+  color: #77777e;
+}
+
+/* BULLES */
+
+body.tinder-auto-topic
+.tinder-auto-post .postbody.content {
+  order: 2 !important;
+  display: block !important;
+  width: auto !important;
+  max-width: 100% !important;
+  min-height: 0 !important;
+  height: auto !important;
+  margin: 0 !important;
+  padding: 10px 14px !important;
+  float: none !important;
+  position: static !important;
+  font-size: inherit !important;
+  line-height: 1.5 !important;
+  text-align: left !important;
+  overflow-wrap: anywhere;
+}
+
+/* Bulle reçue en dark */
+
+html[data-color-scheme="dark"]
+body.tinder-auto-topic
+.tinder-auto-left .postbody.content {
+  color: #f3f3f5 !important;
+  background: #2a272e !important;
+  border: 1px solid rgba(255,255,255,.08) !important;
+  border-radius: 18px 18px 18px 5px !important;
+}
+
+/* Bulle reçue en light */
+
+html[data-color-scheme="light"]
+body.tinder-auto-topic
+.tinder-auto-left .postbody.content {
+  color: #26262b !important;
+  background: #f1f1f3 !important;
+  border: 1px solid #e5e5e7 !important;
+  border-radius: 18px 18px 18px 5px !important;
+}
+
+/* Bulle envoyée */
+
+body.tinder-auto-topic
+.tinder-auto-right .postbody.content {
+  color: #fff !important;
+  background: #fd267a !important;
+  border: 1px solid transparent !important;
+  border-radius: 18px 18px 5px 18px !important;
+}
+
+/* Paragraphes */
+
+body.tinder-auto-topic
+.tinder-auto-post .postbody.content p:first-child {
+  margin-top: 0 !important;
+}
+
+body.tinder-auto-topic
+.tinder-auto-post .postbody.content p:last-child {
+  margin-bottom: 0 !important;
+}
+
+/* Images envoyées */
+
+body.tinder-auto-topic
+.tinder-auto-post .postbody.content img {
+  display: block;
+  max-width: 100% !important;
+  height: auto !important;
+  margin: 5px 0 !important;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 11px;
+}
+
+/* MODIFIER, SUPPRIMER, CITER ET AIMER */
+
+body.tinder-auto-topic
+.tinder-auto-opening .post_details,
+
+body.tinder-auto-topic
+.tinder-auto-post .post_details {
+  display: flex !important;
+  min-height: 16px !important;
+  height: auto !important;
+  padding: 0 !important;
+  background: transparent !important;
+  border: 0 !important;
+}
+
+/* Outils des réponses */
+
+body.tinder-auto-topic
+.tinder-auto-post .post_details {
+  order: 3 !important;
+  width: auto !important;
+  margin: 4px 7px 0 !important;
+}
+
+body.tinder-auto-topic
+.tinder-auto-left .post_details {
+  align-self: flex-start !important;
+}
+
+body.tinder-auto-topic
+.tinder-auto-right .post_details {
+  align-self: flex-end !important;
+}
+
+/* Masque la date native */
+
+body.tinder-auto-topic
+.tinder-auto-post .post_details > .post_date,
+
+body.tinder-auto-topic
+.tinder-auto-opening .post_details > .post_date {
+  display: none !important;
+}
+
+/* Conteneur des outils */
+
+body.tinder-auto-topic .post_manage {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: flex-end !important;
+  gap: 5px !important;
+  width: auto !important;
+  height: auto !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  float: none !important;
+  position: static !important;
+  opacity: .55;
+  transition: var(--transi);
+}
+
+body.tinder-auto-topic
+.tinder-auto-opening:hover .post_manage,
+
+body.tinder-auto-topic
+.tinder-auto-post:hover .post_manage {
+  opacity: 1;
+}
+
+/* CITER, MODIFIER ET SUPPRIMER */
+
+body.tinder-auto-topic .profile-icons {
+  display: flex !important;
+  align-items: center !important;
+  gap: 5px !important;
+  width: auto !important;
+  height: auto !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  list-style: none !important;
+}
+
+body.tinder-auto-topic .profile-icons li {
+  display: block !important;
+  width: auto !important;
+  height: auto !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  float: none !important;
+}
+
+body.tinder-auto-topic .profile-icons a {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+body.tinder-auto-topic .profile-icons img {
+  display: block !important;
+  width: auto !important;
+  max-width: 16px !important;
+  height: 14px !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  object-fit: contain !important;
+  opacity: .75;
+  transition: var(--transi);
+}
+
+body.tinder-auto-topic
+.profile-icons a:hover img {
+  opacity: 1;
+}
+
+/* BOUTON J’AIME */
+
+body.tinder-auto-topic .like_button {
+  display: block !important;
+  width: auto !important;
+  height: auto !important;
+  margin: 0 0 0 5px !important;
+  padding: 0 !important;
+}
+
+body.tinder-auto-topic
+.like_button .rep-button {
+  width: auto !important;
+  min-width: 0 !important;
+  height: auto !important;
+  margin: 0 !important;
+  padding: 2px 7px !important;
+  color: inherit;
+  background: transparent !important;
+  border: var(--border) !important;
+  border-radius: 10px !important;
+  font-size: 8px !important;
+  line-height: 1.2 !important;
+  opacity: .75;
+  cursor: pointer;
+  transition: var(--transi);
+}
+
+body.tinder-auto-topic
+.like_button .rep-button:hover {
+  color: #fd267a !important;
+  border-color: #fd267a !important;
+  opacity: 1;
+}
+
+/* SIGNATURES */
+
+body.tinder-auto-topic
+.tinder-auto-opening .signature_div,
+
+body.tinder-auto-topic
+.tinder-auto-post .signature_div {
+  display: none !important;
+}
+
+/* CRUSH HOUR PROFIL À ONGLETS */
+
+.crush-profile,
+.crush-profile * {
+  box-sizing: border-box;
+}
+
+/* Retours à la ligne ajoutés par Forumactif */
+
+.crush-profile br {
+  display: none !important;
+}
+
+/* APPLICATION */
+
+.crush-profile {
+  width: 360px;
+  max-width: 100%;
+  margin: 25px auto;
+  overflow: hidden;
+  position: relative;
+  font-family: Arial, Helvetica, sans-serif;
+  border-radius: 18px;
+}
+
+/* EN-TÊTE */
+
+.crush-profile-header {
+  height: 50px;
+  display: grid;
+  grid-template-columns: 34px 1fr 34px;
+  align-items: center;
+  padding: 6px 10px;
+}
+
+.crush-profile-back,
+.crush-profile-menu {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 15px;
+}
+
+.crush-profile-back {
+  color: #fd267a;
+}
+
+.crush-profile-menu {
+  opacity: .5;
+}
+
+.crush-profile-brand {
+  text-align: center;
+}
+
+.crush-profile-brand-name {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  color: #fd267a;
+  font-size: 15px;
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -.6px;
+  text-transform: lowercase;
+}
+
+.crush-profile-brand-name i {
+  font-size: 11px;
+  transform: rotate(-8deg);
+}
+
+.crush-profile-tagline {
+  margin-top: 3px;
+  font-size: 10px;
+  font-weight: 600;
+  line-height: 1;
+  text-transform: uppercase;
+  letter-spacing: 1.1px;
+  opacity: .45;
+}
+
+/* CONTRÔLES DES ONGLETS */
+
+.crush-tab-control {
+  display: none !important;
+}
+
+.crush-profile-tabs {
+  height: 40px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  align-items: stretch;
+  padding: 0 10px;
+  border-bottom: 1px solid;
+}
+
+.crush-profile-tab {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  color: inherit;
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 1;
+  text-transform: uppercase;
+  letter-spacing: .8px;
+  opacity: .45;
+  cursor: pointer;
+  transition:
+    color .2s ease,
+    opacity .2s ease;
+}
+
+.crush-profile-tab::after {
+  content: "";
+  height: 2px;
+  position: absolute;
+  right: 12px;
+  bottom: 0;
+  left: 12px;
+  background: #fd267a;
+  border-radius: 3px 3px 0 0;
+  opacity: 0;
+  transform: scaleX(.4);
+  transition:
+    opacity .2s ease,
+    transform .2s ease;
+}
+
+/* ONGLET ACTIF */
+
+#crush-tab-profile:checked
+~ .crush-profile-tabs
+label[for="crush-tab-profile"],
+
+#crush-tab-details:checked
+~ .crush-profile-tabs
+label[for="crush-tab-details"],
+
+#crush-tab-photos:checked
+~ .crush-profile-tabs
+label[for="crush-tab-photos"] {
+  color: #fd267a;
+  opacity: 1;
+}
+
+#crush-tab-profile:checked
+~ .crush-profile-tabs
+label[for="crush-tab-profile"]::after,
+
+#crush-tab-details:checked
+~ .crush-profile-tabs
+label[for="crush-tab-details"]::after,
+
+#crush-tab-photos:checked
+~ .crush-profile-tabs
+label[for="crush-tab-photos"]::after {
+  opacity: 1;
+  transform: scaleX(1);
+}
+
+/* PANNEAUX */
+
+.crush-profile-panels {
+  position: relative;
+}
+
+.crush-profile-panel {
+  display: none;
+}
+
+#crush-tab-profile:checked
+~ .crush-profile-panels
+.crush-profile-panel-one,
+
+#crush-tab-details:checked
+~ .crush-profile-panels
+.crush-profile-panel-two,
+
+#crush-tab-photos:checked
+~ .crush-profile-panels
+.crush-profile-panel-three {
+  display: block;
+}
+
+/* ONGLET 1 PHOTO PRINCIPALE */
+
+.crush-profile-main-photo {
+  height: 255px;
+  overflow: hidden;
+  position: relative;
+  background: #222;
+}
+
+.crush-profile-main-photo > img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.crush-profile-main-photo::after {
+  content: "";
+  position: absolute;
+  inset: 48% 0 0;
+  z-index: 1;
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    rgba(0,0,0,.25) 35%,
+    rgba(0,0,0,.88) 100%
+  );
+  pointer-events: none;
+}
+
+/* IDENTITÉ SUR LA PHOTO */
+
+.crush-profile-identity {
+  position: absolute;
+  right: 15px;
+  bottom: 13px;
+  left: 15px;
+  z-index: 2;
+  color: #fff;
+  text-align: left;
+}
+
+.crush-profile-name-line {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.crush-profile-name {
+  font-size: 22px;
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -.6px;
+}
+
+.crush-profile-age {
+  font-size: 18px;
+  font-weight: 400;
+}
+
+.crush-profile-verified {
+  width: 15px;
+  height: 15px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: #fff;
+  background: #1786ff;
+  border-radius: 50%;
+  font-size: 7px;
+}
+
+.crush-profile-job,
+.crush-profile-location {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  margin-top: 5px;
+  font-size: 9px;
+  line-height: 1.3;
+}
+
+.crush-profile-job {
+  opacity: .95;
+}
+
+.crush-profile-location {
+  opacity: .8;
+}
+
+.crush-profile-job i,
+.crush-profile-location i {
+  width: 11px;
+  flex-shrink: 0;
+  text-align: center;
+}
+
+/* BIOGRAPHIE */
+
+.crush-profile-about {
+  padding: 15px 16px 17px;
+}
+
+.crush-profile-section-title {
+  margin-bottom: 9px;
+  font-size: 9px;
+  font-weight: 800;
+  line-height: 1;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.crush-profile-bio {
+  font-size: inherit;
+  line-height: 1.5;
+  text-align: left;
+}
+
+.crush-profile-bio p {
+  margin: 0 0 8px;
+}
+
+.crush-profile-bio p:last-child {
+  margin-bottom: 0;
+}
+
+/* ONGLET 2 — INFORMATIONS */
+
+.crush-profile-details {
+  padding: 16px;
+}
+
+.crush-profile-detail-section + .crush-profile-detail-section {
+  margin-top: 15px;
+  padding-top: 15px;
+  border-top: 1px solid;
+}
+
+/* RECHERCHE */
+
+.crush-profile-information {
+  display: flex;
+  align-items: flex-start;
+  gap: 9px;
+  padding: 10px;
+  border-radius: 11px;
+}
+
+.crush-profile-information-icon {
+  width: 27px;
+  height: 27px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 27px;
+  color: #fff;
+  background: #fd267a;
+  border-radius: 50%;
+  font-size: 10px;
+}
+
+.crush-profile-information-content {
+  min-width: 0;
+  font-size: 11px;
+  line-height: 1.45;
+  text-align: left;
+}
+
+.crush-profile-information-content strong {
+  display: block;
+  margin-bottom: 3px;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: .7px;
+}
+
+/*  CHANSON DU MOMENT */
+
+.crush-profile-music {
+  display: grid !important;
+  grid-template-columns: 48px minmax(0, 1fr) 30px !important;
+  align-items: center !important;
+  gap: 10px !important;
+  width: 100% !important;
+  min-width: 0 !important;
+  max-width: 100% !important;
+  overflow: hidden !important;
+  padding: 10px !important;
+  border-radius: 11px !important;
+}
+
+.crush-profile-music-cover {
+  display: block !important;
+  grid-column: 1 !important;
+  width: 48px !important;
+  min-width: 48px !important;
+  max-width: 48px !important;
+  height: 48px !important;
+  min-height: 48px !important;
+  max-height: 48px !important;
+  aspect-ratio: 1 / 1 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  float: none !important;
+  position: static !important;
+  object-fit: cover !important;
+  object-position: center !important;
+  border: 0 !important;
+  border-radius: 8px !important;
+}
+
+.crush-profile-music-content {
+  grid-column: 2 !important;
+  width: auto !important;
+  min-width: 0 !important;
+  max-width: 100% !important;
+  overflow: hidden !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  text-align: left !important;
+}
+
+.crush-profile-music-content strong {
+  display: block;
+  margin: 0 0 6px;
+  font-size: 10px;
+  line-height: 1;
+  text-transform: uppercase;
+  letter-spacing: .7px;
+}
+
+.crush-profile-music-title,
+.crush-profile-music-artist {
+  display: block !important;
+  width: 100% !important;
+  min-width: 0 !important;
+  max-width: 100% !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  white-space: nowrap !important;
+}
+
+.crush-profile-music-title {
+  font-size: 12px !important;
+  font-weight: 700 !important;
+  line-height: 1.3 !important;
+}
+
+.crush-profile-music-artist {
+  margin-top: 5px !important;
+  font-size: 10px !important;
+  line-height: 1.3 !important;
+  opacity: .55;
+}
+
+.crush-profile-music-play {
+  grid-column: 3 !important;
+  width: 30px !important;
+  min-width: 30px !important;
+  height: 30px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  color: #fd267a !important;
+  font-size: 18px !important;
+}
+
+/* CENTRES D’INTÉRÊT */
+
+.crush-profile-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.crush-profile-tag {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px 10px;
+  border: 1px solid;
+  border-radius: 20px;
+  font-size: 8px;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+/* Centre d’intérêt partagé */
+
+.crush-profile-tag.is-common {
+  color: #fd267a;
+  border-color: #fd267a;
+}
+
+/* Emoji facultatif */
+
+.crush-profile-tag-emoji {
+  margin-right: 5px;
+  font-size: 9px;
+  line-height: 1;
+}
+
+/* ONGLET 3 PHOTOS */
+
+.crush-profile-gallery {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 7px;
+  padding: 16px;
+}
+
+.crush-profile-gallery-item {
+  overflow: hidden;
+  position: relative;
+  border-radius: 10px;
+}
+
+.crush-profile-gallery-item img {
+  display: block;
+  width: 100%;
+  height: 225px;
+  object-fit: cover;
+  object-position: center;
+}
+
+.crush-profile-gallery-number {
+  position: absolute;
+  right: 8px;
+  bottom: 8px;
+  padding: 4px 7px;
+  color: #fff;
+  background: rgba(0,0,0,.55);
+  border-radius: 10px;
+  font-size: 10px;
+  line-height: 1;
+}
+
+/* ACTIONS DU PROFIL */
+
+.crush-profile-actions {
+  height: 68px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 13px;
+  border-top: 1px solid;
+}
+
+.crush-profile-action {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  background: transparent;
+  border: 2px solid currentColor;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: transform .2s ease;
+}
+
+.crush-profile-action:hover {
+  transform: translateY(-2px);
+}
+
+.crush-profile-action.is-rewind,
+.crush-profile-action.is-super {
+  width: 35px;
+  height: 35px;
+}
+
+.crush-profile-action.is-nope,
+.crush-profile-action.is-like {
+  width: 45px;
+  height: 45px;
+}
+
+.crush-profile-action.is-rewind {
+  color: #f4b400;
+  font-size: 12px;
+}
+
+.crush-profile-action.is-nope {
+  color: #fd267a;
+  font-size: 18px;
+}
+
+.crush-profile-action.is-super {
+  color: #1786ff;
+  font-size: 13px;
+}
+
+.crush-profile-action.is-like {
+  color: #20c997;
+  font-size: 16px;
+}
+
+/* MODE DARK */
+
+html[data-color-scheme="dark"] .crush-profile {
+  color: #f3f3f5;
+  background: #1d1a20;
+  border: 1px solid rgba(255,255,255,.09);
+  box-shadow: 0 8px 24px rgba(0,0,0,.22);
+}
+
+html[data-color-scheme="dark"]
+.crush-profile-header {
+  background: #17151b;
+  border-bottom: 1px solid rgba(255,255,255,.08);
+}
+
+html[data-color-scheme="dark"]
+.crush-profile-tabs,
+
+html[data-color-scheme="dark"]
+.crush-profile-actions {
+  border-color: rgba(255,255,255,.08);
+}
+
+html[data-color-scheme="dark"]
+.crush-profile-section-title {
+  color: #aaa7ae;
+}
+
+html[data-color-scheme="dark"]
+.crush-profile-detail-section + .crush-profile-detail-section {
+  border-color: rgba(255,255,255,.08);
+}
+
+html[data-color-scheme="dark"]
+.crush-profile-information,
+
+html[data-color-scheme="dark"]
+.crush-profile-music {
+  background: #29262d;
+}
+
+html[data-color-scheme="dark"]
+.crush-profile-tag {
+  color: #e2dfe5;
+  border-color: #4a464e;
+}
+
+html[data-color-scheme="dark"]
+.crush-profile-tag.is-common {
+  color: #fd267a;
+  border-color: #fd267a;
+}
+
+html[data-color-scheme="dark"]
+.crush-profile-actions {
+  background: #17151b;
+}
+
+/* MODE LIGHT */
+
+html[data-color-scheme="light"] .crush-profile {
+  color: #242429;
+  background: #fff;
+  border: 1px solid #e6e6e8;
+  box-shadow: 0 8px 24px rgba(20,20,25,.09);
+}
+
+html[data-color-scheme="light"]
+.crush-profile-header {
+  background: #fff;
+  border-bottom: 1px solid #ededee;
+}
+
+html[data-color-scheme="light"]
+.crush-profile-tabs,
+
+html[data-color-scheme="light"]
+.crush-profile-actions {
+  border-color: #ededee;
+}
+
+html[data-color-scheme="light"]
+.crush-profile-section-title {
+  color: #73737a;
+}
+
+html[data-color-scheme="light"]
+.crush-profile-detail-section + .crush-profile-detail-section {
+  border-color: #ededee;
+}
+
+html[data-color-scheme="light"]
+.crush-profile-information,
+
+html[data-color-scheme="light"]
+.crush-profile-music {
+  background: #f4f4f5;
+}
+
+html[data-color-scheme="light"]
+.crush-profile-tag {
+  color: #36363b;
+  border-color: #d8d8dc;
+}
+
+html[data-color-scheme="light"]
+.crush-profile-tag.is-common {
+  color: #fd267a;
+  border-color: #fd267a;
+}
+
+html[data-color-scheme="light"]
+.crush-profile-actions {
+  background: #fff;
+}
+
+/* CRUSH HOUR  NOTIFICATION DE LIKE */
+
+.crush-like,
+.crush-like * {
+  box-sizing: border-box;
+}
+
+.crush-like br {
+  display: none !important;
+}
+
+/* CONTENEUR */
+
+.crush-like {
+  width: 285px;
+  max-width: 100%;
+  display: grid;
+  grid-template-columns: 48px 1fr 32px;
+  align-items: center;
+  gap: 10px;
+  margin: 20px auto;
+  padding: 12px;
+  overflow: hidden;
+  position: relative;
+  font-family: Arial, Helvetica, sans-serif;
+  border-radius: 15px;
+}
+
+/* AVATAR */
+
+.crush-like-avatar {
+  width: 48px;
+  height: 48px;
+  position: relative;
+}
+
+.crush-like-avatar > img {
+  display: block;
+  width: 48px;
+  height: 48px;
+  object-fit: cover;
+  object-position: center;
+  border: 2px solid #fff;
+  border-radius: 50%;
+}
+
+.crush-like-avatar-heart {
+  width: 21px;
+  height: 21px;
+  position: absolute;
+  right: -3px;
+  bottom: -2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  background: #fd267a;
+  border: 2px solid;
+  border-radius: 50%;
+  font-size: 8px;
+}
+
+/* MESSAGE */
+
+.crush-like-content {
+  min-width: 0;
+  text-align: left;
+}
+
+.crush-like-brand {
+  margin-bottom: 4px;
+  color: #fd267a;
+  font-size: 7px;
+  font-weight: 800;
+  line-height: 1;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.crush-like-message {
+  font-size: inherit;
+  line-height: 1.35;
+}
+
+.crush-like-name {
+  font-weight: 800;
+}
+
+.crush-like-time {
+  margin-top: 4px;
+  font-size: 7px;
+  line-height: 1;
+  opacity: .45;
+}
+
+/* GRAND CŒUR */
+
+.crush-like-symbol {
+  width: 32px;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fd267a;
+  font-size: 27px;
+  transform: rotate(-7deg);
+}
+
+/* BOUTON */
+
+.crush-like-button {
+  grid-column: 2 / 4;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  width: max-content;
+  min-width: 120px;
+  margin-top: 2px;
+  padding: 8px 13px;
+  color: #fff;
+  background: #fd267a;
+  border-radius: 20px;
+  font-size: 8px;
+  font-weight: 800;
+  line-height: 1;
+  text-transform: uppercase;
+  letter-spacing: .6px;
+  cursor: pointer;
+  transition:
+    background .2s ease,
+    transform .2s ease;
+}
+
+.crush-like-button:hover {
+  background: #e91e63;
+  transform: translateY(-1px);
+}
+
+.crush-like-button i {
+  font-size: 7px;
+}
+
+.crush-like-button,
+.crush-like-button:link,
+.crush-like-button:visited {
+  color: #fff !important;
+  text-decoration: none !important;
+}
+
+/* MODE DARK */
+
+html[data-color-scheme="dark"] .crush-like {
+  color: #f3f3f5;
+  background: #1d1a20;
+  border: 1px solid rgba(255,255,255,.09);
+  box-shadow: 0 6px 18px rgba(0,0,0,.2);
+}
+
+html[data-color-scheme="dark"]
+.crush-like-avatar-heart {
+  border-color: #1d1a20;
+}
+
+/* MODE LIGHT */
+
+html[data-color-scheme="light"] .crush-like {
+  color: #242429;
+  background: #fff;
+  border: 1px solid #e6e6e8;
+  box-shadow: 0 6px 18px rgba(20,20,25,.08);
+}
+
+html[data-color-scheme="light"]
+.crush-like-avatar-heart {
+  border-color: #fff;
+}
+
+.crush-profile-music-play,
+.crush-profile-music-play:link,
+.crush-profile-music-play:visited {
+  color: #fd267a !important;
+  text-decoration: none !important;
+}
+
+.crush-profile-music-play:hover {
+  color: #e91e63 !important;
+  transform: scale(1.1);
+}
+
+.crush-profile-music-play {
+  transition:
+    color .2s ease,
+    transform .2s ease;
+}
+
+
+/* NOUVEAU PROFIL A VOLETS */
+
+#wombat.cj-profile {
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: none !important;
+    margin-right: auto !important;
+    margin-left: auto !important;
+    padding: 16px;
+    box-sizing: border-box;
+}
+
+#wombat.cj-profile .user_profile,
+#wombat.cj-profile .profile_infos,
+#wombat.cj-profile .cj-profile__layout,
+#wombat.cj-profile .cj-profile__sidebar,
+#wombat.cj-profile .cj-profile__main {
+    min-height: 0 !important;
+    max-height: none;
+}
+
+#wombat.cj-profile .user_profile.cj-profile__layout {
+    height: 388px !important;
+    min-height: 388px !important;
+    max-height: 388px !important;
+    padding: 14px 14px 0 !important;
+    overflow-x: hidden !important;
+    overflow-y: scroll !important;
+    box-sizing: border-box !important;
+    scrollbar-gutter: stable;
+}
+
+#wombat.cj-profile .cj-profile__sidebar,
+#wombat.cj-profile .cj-profile__main {
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: none !important;
+    overflow: visible !important;
+}
+
+#wombat .cj-profile__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    margin-bottom: 14px;
+}
+
+#wombat .cj-profile__name {
+    margin: 0;
+}
+
+#wombat .cj-profile__rank {
+    margin-top: 4px;
+    font-size: 12px;
+    opacity: .65;
+}
+
+#wombat .cj-profile__header-actions,
+#wombat .profile_contact {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+#wombat .cj-profile__layout {
+    display: grid;
+    grid-template-columns: 260px minmax(0, 1fr);
+    gap: 8px;
+    align-items: start;
+}
+
+#wombat .cj-profile__sidebar,
+#wombat .cj-profile__drawer-toggle,
+#wombat .cj-profile__drawer-content {
+    background: var(--neutralDark, #141019);
+    border: var(--border, 1px solid rgba(255,255,255,.08));
+}
+
+#wombat .cj-profile__sidebar {
+    position: relative;
+    margin-bottom: 14px !important;
+    padding: 10px;
+    border-radius: 12px;
+    overflow: hidden !important;
+}
+
+#wombat .cj-profile__sidebar::after {
+    content: "survoler pour afficher les informations";
+    position: absolute;
+    z-index: 4;
+    right: 18px;
+    bottom: 18px;
+    left: 18px;
+    padding: 7px 9px;
+    box-sizing: border-box;
+    border-radius: 5px;
+    color: var(--stay-white, #fff);
+    background: color-mix(in srgb, var(--neutralDarker, #141019) 82%, transparent);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: .04em;
+    line-height: 1.3;
+    text-align: center;
+    text-transform: lowercase;
+    pointer-events: none;
+    transition: opacity .15s ease, transform .15s ease;
+}
+
+#wombat .cj-profile__sidebar:hover::after {
+    opacity: 0;
+    transform: translateY(4px);
+}
+
+#wombat .cj-profile__avatar,
+#wombat .cj-profile__avatar img {
+    display: block;
+    width: 100%;
+}
+
+#wombat .cj-profile__avatar img {
+    height: 340px;
+    max-width: none !important;
+    max-height: none !important;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+#wombat .cj-profile__quick {
+    position: absolute;
+    z-index: 5;
+    inset: 10px;
+    display: grid;
+    grid-auto-rows: max-content;
+    gap: 5px;
+    align-content: start;
+    margin: 0;
+    padding: 14px 12px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    box-sizing: border-box;
+    border-radius: 8px;
+    background: color-mix(in srgb, var(--neutralDarker, #141019) 97%, transparent);
+    backdrop-filter: blur(6px);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transform: translateY(5px);
+    transition: opacity .2s ease, transform .2s ease, visibility .2s ease;
+}
+
+#wombat .cj-profile__sidebar:hover .cj-profile__quick {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translateY(0);
+}
+
+#wombat .cj-profile__quick .profile_field {
+    display: grid;
     grid-template-columns: minmax(0, 1fr);
-    grid-template-rows: auto;
-    max-width: 420px;
-  }
+    gap: 2px;
+    align-items: start;
+    min-height: 0 !important;
+    height: auto !important;
+    max-height: none !important;
+    margin: 0 !important;
+    padding: 5px 0 !important;
+    overflow: visible !important;
+    font-size: 12px;
+    line-height: 1.4;
+}
 
-  .qeel-left,
-  .qeel-members {
-    grid-column: 1;
-    height: 252px;
+#wombat .cj-profile__quick label {
+    color: var(--accentClr, #df829b);
+    font-size: 11px;
+    font-weight: 700;
+    line-height: 1.35;
+}
+
+#wombat .cj-profile__quick field,
+#wombat .cj-profile__quick .field_uneditable {
+    display: block;
+    width: 100%;
+    min-width: 0;
+    overflow-wrap: anywhere;
+    font-size: 12px;
+    line-height: 1.4;
+}
+
+#wombat .cj-profile__quick .cj-profile__post-links {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2px;
+    width: 100%;
+    margin-top: 5px;
+    font-size: 12px;
+}
+
+#wombat .cj-profile__quick .cj-profile__post-links a {
+    display: block;
+    width: 100%;
+    overflow-wrap: anywhere;
+    line-height: 1.35;
+}
+
+#wombat .cj-profile__main {
+    display: grid;
+    gap: 7px;
+    align-content: start;
+    min-width: 0;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+/* Marge réelle sur le dernier volet */
+#wombat .cj-profile__main > .cj-profile__drawer:last-of-type {
+    margin-bottom: 14px !important;
+}
+
+#wombat .cj-profile__drawer-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 42px;
+    padding: 9px 13px;
+    box-sizing: border-box;
+    border-radius: 10px;
+    color: var(--textColor, inherit);
+    list-style: none;
+    cursor: pointer;
+}
+
+#wombat .cj-profile__drawer-toggle > span {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+#wombat .cj-profile__drawer-toggle .fa-solid {
+    width: 16px;
+    color: var(--accentClr, #df829b);
+    text-align: center;
+}
+
+#wombat .cj-profile__drawer-toggle::-webkit-details-marker {
+    display: none;
+}
+
+#wombat .cj-profile__drawer-toggle::marker {
+    content: "";
+}
+
+#wombat .cj-profile__drawer[open] .cj-profile__drawer-toggle {
+    color: var(--accentClr, #df829b);
+    border-color: currentColor;
+    border-radius: 10px 10px 0 0;
+}
+
+#wombat .cj-profile__drawer-content {
+    display: none;
+    max-height: none;
+    padding: 13px;
+    overflow: visible;
+    border-top: 0;
+    border-radius: 0 0 10px 10px;
+}
+
+#wombat .cj-profile__drawer[open] .cj-profile__drawer-content {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 14px;
+}
+
+/* Alignement commun des champs comme dans la popup AJAX. */
+#wombat .cj-profile__drawer-content:not([data-cj-zone="contact"]) .profile_field,
+#wombat.cj-profile [data-cj-zone]:not([data-cj-zone="quick"]):not([data-cj-zone="contact"]):not([data-cj-zone="source"]) > .profile_field {
+    display: grid !important;
+    grid-template-columns: 95px minmax(0, 1fr) !important;
+    column-gap: 6px !important;
+    align-items: start !important;
+    min-width: 0;
+    min-height: 0 !important;
+    height: auto !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: visible !important;
+    line-height: 1.5;
+}
+
+#wombat .cj-profile__drawer-content:not([data-cj-zone="contact"]) .profile_field > label {
+    display: block !important;
+    width: 95px !important;
+    min-width: 95px !important;
+    max-width: 95px !important;
+    margin: 0 !important;
+    box-sizing: border-box;
+    color: var(--accentClr, #df829b);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .04em;
+    line-height: 1.5;
+    text-transform: uppercase;
+}
+
+html[data-color-scheme="dark"] #wombat .cj-profile__drawer-content:not([data-cj-zone="contact"]) .profile_field > label {
+    color: var(--textColorAccent, var(--textColor)) !important;
+}
+
+#wombat .cj-profile__drawer-content:not([data-cj-zone="contact"]) .profile_field > field {
+    display: block !important;
+    grid-column: 2 !important;
+    min-width: 0;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow-wrap: anywhere;
+}
+
+/* Dernier volet : liste indépendante, sans colonne intitulé/valeur. */
+#wombat .cj-profile__contacts {
+    padding: 12px 13px;
+}
+
+#wombat .cj-profile__contacts .profile_contact {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 8px !important;
+    align-items: stretch !important;
+    width: 100%;
+}
+
+#wombat .cj-profile__contacts .cj-profile__contact-link {
+    display: block !important;
+    width: 100%;
+    min-height: 0;
+    margin: 0 !important;
+    padding: 9px 11px !important;
+    box-sizing: border-box;
+    border-radius: 7px;
+    background: var(--neutral, rgba(255,255,255,.04));
+}
+
+#wombat .cj-profile__contacts .cj-profile__contact-link > a,
+#wombat .cj-profile__contacts .cj-profile__contact-link > span {
+    display: block !important;
+    width: 100%;
+}
+
+#wombat .cj-profile__contacts .cj-profile__contact-link > a {
+    color: var(--textColorAccent, var(--accentClr));
+    text-decoration: none;
+}
+
+#wombat .cj-profile__contacts .cj-profile__contact-link > a:hover {
+    color: var(--textColor, currentColor);
+    text-decoration: underline;
+}
+
+#wombat .cj-profile__contacts .cj-profile__contact-link.is-empty {
+    opacity: .45;
+}
+
+#wombat .cj-profile__post-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px 10px;
+    margin-top: 6px;
+}
+
+#wombat .cj-profile__source,
+#wombat .cj-profile__hidden-field,
+#wombat .profile-dark-avatar-popup-field {
+    display: none !important;
+}
+
+#wombat .cj-profile__admin {
+    margin-top: 10px;
+    text-align: center;
+}
+
+/* Correctif: marge basse réelle dans le viewport scrollable. */
+#wombat.cj-profile .user_profile.cj-profile__layout {
+    padding: 14px 14px 0 !important;
+}
+
+#wombat.cj-profile .user_profile.cj-profile__layout > .cj-profile__sidebar {
+    margin-bottom: 14px !important;
+}
+
+#wombat.cj-profile .user_profile.cj-profile__layout > .profile_infos.cj-profile__main {
+    padding-bottom: 14px !important;
+    box-sizing: border-box !important;
+}
+
+#wombat.cj-profile .profile_infos.cj-profile__main > details.cj-profile__drawer:last-of-type {
+    margin-bottom: 0 !important;
+}
+
+
+
+/* mini-profil des messages à cinq onglets */
+
+body:not(.tinder-auto-topic) .post_row.post {
+    grid-template-columns: 240px minmax(0, 1fr) !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    overflow: hidden;
+}
+
+body:not(.tinder-auto-topic) .post_row.post.cj-post-no-profile {
+    grid-template-columns: minmax(0, 1fr) !important;
+}
+
+body:not(.tinder-auto-topic) .post_row.post.cj-post-no-profile .post_head,
+body:not(.tinder-auto-topic) .post_row.post.cj-post-no-profile .post_message {
+    grid-column: 1 / -1 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+}
+
+body:not(.tinder-auto-topic) .post_row .post_head {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    box-sizing: border-box;
+}
+
+body:not(.tinder-auto-topic) .post_row .cj-post-profile {
+    width: 240px !important;
+    min-width: 240px !important;
+    max-width: 240px !important;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+body:not(.tinder-auto-topic) .post_row .cj-post-profile .post_avatar {
+    width: 220px !important;
+    min-width: 220px !important;
+    max-width: 220px !important;
+    height: auto !important;
+    margin-right: auto !important;
+    margin-left: auto !important;
+    overflow: visible;
+}
+
+body:not(.tinder-auto-topic) .post_row .cj-post-profile .post_avatar img {
+    display: block;
+    width: 220px !important;
+    min-width: 220px !important;
+    max-width: 220px !important;
+    height: 352px !important;
+    min-height: 352px !important;
+    max-height: 352px !important;
+    object-fit: fill !important;
+    border-radius: 5px;
+}
+
+body:not(.tinder-auto-topic) .post_row .post_message {
+    width: auto !important;
+    min-width: 0 !important;
+    max-width: 100% !important;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+/* Selfie place dans le petit encadre a droite de l'en-tete. */
+body:not(.tinder-auto-topic) .post_row .post_image:has(.cj-post-selfie-field) {
+    overflow: hidden !important;
+    border-radius: 5px;
+}
+
+body:not(.tinder-auto-topic) .post_row .post_image .cj-post-selfie-field,
+body:not(.tinder-auto-topic) .post_row .post_image .field_content {
+    display: block !important;
+    width: 100% !important;
+    height: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+body:not(.tinder-auto-topic) .post_row .post_image .cj-post-selfie-field > .field_label,
+body:not(.tinder-auto-topic) .post_row .post_image .cj-post-selfie-field > .field_separator {
+    display: none !important;
+}
+
+body:not(.tinder-auto-topic) .post_row .post_image .cj-post-selfie-field img {
+    display: block !important;
+    width: 100% !important;
+    height: 100% !important;
+    max-width: none !important;
+    max-height: none !important;
+    object-fit: cover !important;
+}
+
+.post_row .cj-post-tabs {
+    width: 100%;
+    min-width: 0;
+    max-width: 100%;
+    margin-top: 10px;
+}
+
+.post_row .cj-post-tabs__nav {
+    display: grid !important;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 5px;
+    width: 100%;
+    margin-bottom: 7px;
+}
+
+.post_row .cj-post-tabs__tab {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    min-width: 0;
+    height: 30px;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    border-radius: var(--radius-mini, 5px);
+    color: var(--textColor);
+    background: var(--neutralDarker);
+    cursor: pointer;
+}
+
+.post_row .cj-post-tabs__tab:hover,
+.post_row .cj-post-tabs__tab.selected,
+.post_row .cj-post-tabs__tab[aria-selected="true"] {
+    background: var(--accentClr) !important;
+}
+
+.post_row .cj-post-tabs__tab.selected i,
+.post_row .cj-post-tabs__tab[aria-selected="true"] i,
+.post_row .cj-post-tabs__tab.selected i::before,
+.post_row .cj-post-tabs__tab[aria-selected="true"] i::before {
+    display: inline-block !important;
+    color: #18121d !important;
+    font-family: "Font Awesome 6 Free" !important;
+    font-size: 16px !important;
+    font-style: normal !important;
+    font-weight: 900 !important;
+    line-height: 1 !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+.post_row .cj-post-tabs__tab i {
+    pointer-events: none;
+}
+
+.post_row .post_quote .field_label,
+.post_row .post_quote .field_separator {
+    display: none !important;
+}
+
+.post_row .post_quote .user_field,
+.post_row .post_quote .field_content {
+    display: block;
+    width: 100%;
+    margin: 0;
+}
+
+.post_row .cj-post-tabs__contents {
+    width: 100%;
+    min-width: 0;
+    max-width: 100%;
+    height: 255px;
+    min-height: 255px;
+    padding: 10px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    box-sizing: border-box;
+    border-radius: var(--radius-mini, 5px);
+    background: var(--neutralDarker);
+}
+
+.post_row .cj-post-tabs__panel {
+    display: block;
+    width: 100%;
+    min-width: 0;
+    max-width: 100%;
+    overflow-wrap: anywhere;
+}
+
+.post_row .cj-post-tabs__panel.hidden,
+.post_row .cj-post-tabs__panel[hidden] {
+    display: none !important;
+}
+
+.post_row .cj-post-tabs__panel .user_field {
+    display: block;
+    width: 100%;
+    min-width: 0;
+    margin: 0 0 7px;
+    padding: 0;
+    overflow-wrap: anywhere;
+    line-height: 1.45;
+}
+
+.post_row .cj-post-tabs__panel .user_field:last-child {
+    margin-bottom: 0;
+}
+
+.post_row .cj-post-tabs__panel .field_label {
+    margin-right: 4px;
+    color: var(--textColorAccent, var(--accentClr));
+    font-size: 10px;
+    font-weight: 800;
+    text-transform: uppercase;
+}
+
+.post_row .cj-post-tabs__panel .field_content {
+    font-size: 11px;
+    line-height: 1.45;
+}
+
+.post_row .cj-post-tabs__panel .field_separator {
+    display: none;
+}
+
+.post_row .cj-post-tabs__panel img {
+    max-width: 100%;
+    height: auto;
+}
+
+.post_row .cj-post-tabs__panel .field-avatar-mode-sombre,
+.post_row .cj-post-tabs__panel .field-genre,
+.post_row .cj-post-tabs__panel .field-date-de-naissance,
+.post_row .cj-post-tabs__panel .field-emploi-loisirs,
+.post_row .cj-post-tabs__panel .field-humeur,
+.post_row .cj-post-tabs__panel .field-commentaires {
+    display: none !important;
+}
+
+.post_row .cj-post-awards:empty::after,
+.post_row .compassTab:empty::after,
+.post_row .curiositiesTab:empty::after {
+    display: block;
+    color: var(--textColor);
+    opacity: .55;
+    font-size: 10px;
+    font-style: italic;
+    text-align: center;
+}
+
+.post_row .compassTab:empty::after {
+    content: "aucune jauge renseignée";
+}
+
+/* Moral compass du mini-profil : deux graphiques empilés. */
+.post_row .compassTab .cj-post-gauges-field {
+    display: block !important;
+    width: 100% !important;
+    margin: 0 !important;
+}
+
+.post_row .cj-post-gauges {
+    display: grid;
+    grid-template-columns: 185px;
+    justify-content: center;
+    justify-items: center;
+    gap: 8px;
+    width: 100%;
+}
+
+.post_row svg.cj-post-gauge-chart {
+    display: block;
+    width: 185px !important;
+    min-width: 185px !important;
+    height: 185px !important;
+    min-height: 185px !important;
+    max-width: none !important;
+    overflow: visible;
+}
+
+.post_row .cj-post-gauge-track,
+.post_row .cj-post-gauge-value {
+    fill: none;
+    stroke-linecap: butt;
+    stroke-width: 13px;
+}
+
+.post_row .cj-post-gauge-track {
+    stroke: var(--neutralDark, rgba(127,127,127,.18));
+}
+
+.post_row .cj-post-gauge-value--1 {
+    stroke: var(--one, var(--accentClr, currentColor));
+}
+
+.post_row .cj-post-gauge-value--2 {
+    stroke: var(--two, var(--accentClr, currentColor));
+}
+
+.post_row .compassTab.cj-gauges-animate .cj-post-gauge-value {
+    animation: cjPostGaugeFill .48s cubic-bezier(.2, .75, .35, 1) both;
+}
+
+@keyframes cjPostGaugeFill {
+    from { stroke-dasharray: 0 100; }
+    to { stroke-dasharray: var(--cj-gauge-value) 100; }
+}
+
+.post_row .cj-post-gauge-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .02em;
+    text-anchor: end;
+    text-transform: uppercase;
+}
+
+.post_row .cj-post-gauge-label--1 {
+    fill: var(--one, var(--accentClr, currentColor));
+}
+
+.post_row .cj-post-gauge-label--2 {
+    fill: var(--two, var(--accentClr, currentColor));
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .post_row .cj-post-gauge-value {
+        animation: none !important;
+    }
+}
+
+.post_row .curiositiesTab:empty::after {
+    content: "aucun badge obtenu";
+}
+
+
+/* JAUGES */
+
+.post_row .compassTab .cj-post-gauges-field {
+    display: block !important;
+    width: 100% !important;
+    margin: 0 !important;
+}
+
+.post_row .cj-post-gauges {
+    display: grid;
+    grid-template-columns: 185px;
+    justify-content: center;
+    justify-items: center;
+    gap: 8px;
+    width: 100%;
+}
+
+.post_row svg.cj-post-gauge-chart {
+    display: block;
+    width: 185px !important;
+    min-width: 185px !important;
+    height: 185px !important;
+    min-height: 185px !important;
+    max-width: none !important;
+    overflow: visible;
+}
+
+.post_row .cj-post-gauge-track,
+.post_row .cj-post-gauge-value {
+    fill: none;
+    stroke-linecap: butt;
+    stroke-width: 13px;
+}
+
+.post_row .cj-post-gauge-track {
+    stroke: var(--neutralDark, rgba(127, 127, 127, .18));
+}
+
+.post_row .cj-post-gauge-value--1 {
+    stroke: var(--one, var(--accentClr, currentColor));
+}
+
+.post_row .cj-post-gauge-value--2 {
+    stroke: var(--two, var(--accentClr, currentColor));
+}
+
+.post_row .cj-post-gauge-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .02em;
+    text-anchor: end;
+    text-transform: uppercase;
+}
+
+.post_row .cj-post-gauge-label--1 {
+    fill: var(--one, var(--accentClr, currentColor));
+}
+
+.post_row .cj-post-gauge-label--2 {
+    fill: var(--two, var(--accentClr, currentColor));
+}
+
+.post_row .compassTab.cj-gauges-animate .cj-post-gauge-value {
+    animation: cjPostGaugeFill .48s cubic-bezier(.2, .75, .35, 1) both;
+}
+
+@keyframes cjPostGaugeFill {
+    from {
+        stroke-dasharray: 0 100;
+    }
+
+    to {
+        stroke-dasharray: var(--cj-gauge-value) 100;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .post_row .cj-post-gauge-value {
+        animation: none !important;
+    }
+}
+
+/* Avatar identique uniquement dans les profils des messages. */
+body:not(.tinder-auto-topic) .post_row .cj-post-profile .post_avatar {
+    width: 220px !important;
+    min-width: 220px !important;
+    max-width: 220px !important;
+    height: auto !important;
+    margin-right: auto !important;
+    margin-left: auto !important;
+    overflow: visible !important;
+}
+
+body:not(.tinder-auto-topic) .post_row .cj-post-profile .post_avatar img {
+    display: block !important;
+    width: 220px !important;
+    min-width: 220px !important;
+    max-width: 220px !important;
+    height: 352px !important;
+    min-height: 352px !important;
+    max-height: 352px !important;
+    object-fit: fill !important;
+    border-radius: 5px !important;
+}
+
+/* CORRECTIF BITCH */ 
+
+
+/* Espace entre le mini-profil et le message, sujets ordinaires uniquement. */
+body:not(.tinder-auto-topic) .post_row.post:not(.cj-post-no-profile) {
+    column-gap: 10px !important;
+}
+
+/* Aucun espace résiduel lorsque le profil est masqué dans une annonce. */
+body:not(.tinder-auto-topic) .post_row.post.cj-post-no-profile {
+    column-gap: 0 !important;
+}
+
+/* SUPPRESSION DU FOND DU FOOTER */
+.main_forum
+#wrapper
+#container
+#content
+#main
+#main-content
+.footer-container{
+  background:transparent !important;
+  background-color:transparent !important;
+  background-image:none !important;
+  -webkit-backdrop-filter:none !important;
+  backdrop-filter:none !important;
+  box-shadow:none !important;
+  transition:none !important;
+}
+
+/* Supprime le fond du bloc London Archives */
+.main_forum
+#wrapper
+#container
+#content
+#main
+#main-content
+.footer-container
+.footer-credits{
+  background:transparent !important;
+  background-color:transparent !important;
+  background-image:none !important;
+  -webkit-backdrop-filter:none !important;
+  backdrop-filter:none !important;
+  box-shadow:none !important;
+  transition:none !important;
+}
+
+/* Supprime le fond de la div .up dans l'en tête du fofo */
+html[data-color-scheme] .main_forum #page-header .fiche-fond > .up.up{
+  background:transparent !important;
+  background-color:transparent !important;
+  background-image:none !important;
+  -webkit-backdrop-filter:none !important;
+  backdrop-filter:none !important;
+  box-shadow:none !important;
+}
+
+/* Méteo avec le même fond que Mind the Gap */
+.main_forum #page-header .up .london-widget{
+  background:transparent !important;
+  background-color:transparent !important;
+  background-image:none !important;
+  -webkit-backdrop-filter:none !important;
+  backdrop-filter:none !important;
+}
+
+
+/* ============= CARROUSEL DES SOUS-FORUMS =========== */
+
+
+/* ================ STRUCTURE GÉNÉRALE    ======== */
+
+html
+.category
+.forum_details.forum_subforums:has(
+  #subforum.cj-subforum-carousel
+) {
+  display: flex !important;
+  align-items: center !important;
+
+  width: 100% !important;
+  height: 34px !important;
+  min-height: 34px !important;
+  max-height: 34px !important;
+
+  margin-top: 6px !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+}
+
+
+/* Flèche gauche, fenêtre centrale, flèche droite */
+
+html
+.category
+.forum_details.forum_subforums
+#subforum.cj-subforum-carousel {
+  display: grid !important;
+  grid-template-columns: 25px minmax(0, 1fr) 25px !important;
+  align-items: center !important;
+  gap: 5px !important;
+
+  width: 100% !important;
+  min-width: 0 !important;
+  max-width: 100% !important;
+
+  height: 34px !important;
+  min-height: 34px !important;
+  max-height: 34px !important;
+
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+}
+
+
+/* Fenêtre centrale */
+
+html
+.cj-subforum-carousel
+.cj-subforum-viewport {
+  grid-column: 2;
+
+  display: block !important;
+
+  width: 100% !important;
+  min-width: 0 !important;
+
+  height: 28px !important;
+  min-height: 28px !important;
+  max-height: 28px !important;
+
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+}
+
+
+/* Bande horizontale déplacée par le JavaScript */
+
+html
+.cj-subforum-carousel
+.cj-subforum-track {
+  display: flex !important;
+  flex-wrap: nowrap !important;
+  align-items: center !important;
+
+  width: 100% !important;
+  min-width: 0 !important;
+
+  height: 28px !important;
+  min-height: 28px !important;
+  max-height: 28px !important;
+
+  margin: 0 !important;
+  padding: 0 !important;
+
+  transform: translate3d(0, 0, 0);
+  transition: transform .3s ease;
+  will-change: transform;
+}
+
+
+/* Un sous-forum par écran */
+
+html
+.category
+.forum_details.forum_subforums
+#subforum.cj-subforum-carousel
+.cj-subforum-track > a {
+  position: relative !important;
+
+  display: flex !important;
+  flex: 0 0 100% !important;
+  align-items: center !important;
+  justify-content: center !important;
+
+  width: 100% !important;
+  min-width: 100% !important;
+  max-width: 100% !important;
+
+  height: 28px !important;
+  min-height: 28px !important;
+  max-height: 28px !important;
+
+  margin: 0 !important;
+  padding: 2px 7px !important;
+  overflow: hidden !important;
+
+  color: var(--contrastLight) !important;
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
+
+  border: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+
+  font-family: var(--font) !important;
+  font-size: 11px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0 !important;
+  line-height: 18px !important;
+
+  text-align: center !important;
+  text-decoration: none !important;
+  text-transform: uppercase !important;
+  white-space: nowrap !important;
+
+  box-sizing: border-box !important;
+  opacity: 1 !important;
+  transform: none !important;
+
+  transition:
+    color .25s ease,
+    opacity .25s ease,
+    transform .25s ease !important;
+}
+
+
+/* Empêche l’ancien CSS de réduire la police */
+
+html
+.category
+.forum_details.forum_subforums
+#subforum.cj-subforum-carousel:has(
+  .cj-subforum-track > a:nth-child(5)
+)
+.cj-subforum-track > a,
+
+html
+.category
+.forum_details.forum_subforums
+#subforum.cj-subforum-carousel:has(
+  .cj-subforum-track > a:nth-child(7)
+)
+.cj-subforum-track > a {
+  margin: 0 !important;
+  padding: 2px 7px !important;
+
+  font-size: 11px !important;
+  line-height: 18px !important;
+  white-space: nowrap !important;
+}
+
+
+/* ========  MODE DEUX COLONNES =========== */
+
+html[data-forum-layout="columns"]
+.category
+.forum_details.forum_subforums
+#subforum.cj-subforum-carousel
+.cj-subforum-track > a {
+  color: var(--contrastLight) !important;
+
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
+
+  border-radius: 0 !important;
+}
+
+
+/* L’étiquette reste sans gradient en colonnes */
+
+html[data-forum-layout="columns"]
+.category
+.forum_details.forum_subforums
+#subforum.cj-subforum-carousel
+.cj-subforum-label {
+  display: inline !important;
+  flex: none !important;
+
+  width: auto !important;
+  min-width: 0 !important;
+  max-width: 100% !important;
+
+  margin: 0 !important;
+  padding: 0 !important;
+
+  color: inherit !important;
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
+
+  border-radius: 0 !important;
+
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  white-space: nowrap !important;
+}
+
+
+/* Survol du texte en colonnes */
+
+html[data-forum-layout="columns"]
+.category
+.forum_details.forum_subforums
+#subforum.cj-subforum-carousel
+.cj-subforum-track > a:hover {
+  color: var(--accentClr) !important;
+
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
+
+  opacity: 1 !important;
+  transform: translateY(-1px) !important;
+}
+
+
+/* Soulignement animé en colonnes */
+
+html[data-forum-layout="columns"]
+.category
+.forum_details.forum_subforums
+#subforum.cj-subforum-carousel
+.cj-subforum-track > a::after {
+  position: absolute !important;
+  right: 7px !important;
+  bottom: 1px !important;
+  left: 7px !important;
+
+  display: block !important;
+
+  width: auto !important;
+  height: 1px !important;
+
+  content: "" !important;
+
+  background:
+    linear-gradient(
+      .07turn,
+      var(--one),
+      var(--two)
+    ) !important;
+
+  border: 0 !important;
+  border-radius: 0 !important;
+
+  opacity: 0 !important;
+  transform: scaleX(0) !important;
+  transform-origin: left center !important;
+
+  transition:
+    opacity .25s ease,
+    transform .35s ease !important;
+}
+
+
+/* Apparition du soulignement */
+
+html[data-forum-layout="columns"]
+.category
+.forum_details.forum_subforums
+#subforum.cj-subforum-carousel
+.cj-subforum-track > a:hover::after {
+  opacity: 1 !important;
+  transform: scaleX(1) !important;
+}
+
+
+/* ================== MODE NORMAL ============ */
+
+/* Le grand lien nécessaire au déplacement reste transparent */
+
+html[data-forum-layout="normal"]
+.category
+.forum_details.forum_subforums
+#subforum.cj-subforum-carousel
+.cj-subforum-track > a {
+  color: var(--stay-white) !important;
+
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
+
+  border-radius: 0 !important;
+
+  opacity: 1 !important;
+  transform: none !important;
+}
+
+
+/* Le gradient est appliqué uniquement à l’étiquette */
+
+html[data-forum-layout="normal"]
+.category
+.forum_details.forum_subforums
+#subforum.cj-subforum-carousel
+.cj-subforum-track > a
+.cj-subforum-label {
+  display: inline-flex !important;
+  flex: none !important;
+
+  align-items: center !important;
+  justify-content: center !important;
+
+  width: fit-content !important;
+  min-width: 0 !important;
+  max-width: calc(100% - 10px) !important;
+
+  min-height: 24px !important;
+
+  margin: 0 !important;
+  padding: 2px 10px !important;
+
+  color: var(--stay-white) !important;
+
+  background:
+    linear-gradient(
+      .07turn,
+      var(--one),
+      var(--two)
+    ) !important;
+
+  border-radius: var(--radius-mini) !important;
+  box-sizing: border-box !important;
+
+  overflow: hidden !important;
+  text-align: center !important;
+  text-overflow: ellipsis !important;
+  white-space: nowrap !important;
+
+  transition:
+    color .25s ease,
+    background .25s ease !important;
+}
+
+
+/* Alternance du gradient */
+
+html[data-forum-layout="normal"]
+.category
+.forum_details.forum_subforums
+#subforum.cj-subforum-carousel
+.cj-subforum-track > a:nth-child(2n)
+.cj-subforum-label {
+  background:
+    linear-gradient(
+      .07turn,
+      var(--three),
+      var(--one)
+    ) !important;
+}
+
+
+/* Survol du gradient */
+
+html[data-forum-layout="normal"]
+.category
+.forum_details.forum_subforums
+#subforum.cj-subforum-carousel
+.cj-subforum-track > a:hover
+.cj-subforum-label {
+  color: var(--stay-white) !important;
+
+  background:
+    linear-gradient(
+      .07turn,
+      var(--two),
+      var(--three)
+    ) !important;
+}
+
+
+/* Aucun soulignement sous les gradients */
+
+html[data-forum-layout="normal"]
+.category
+.forum_details.forum_subforums
+#subforum.cj-subforum-carousel
+.cj-subforum-track > a::after {
+  display: none !important;
+
+  width: 0 !important;
+  height: 0 !important;
+
+  content: none !important;
+  background: none !important;
+
+  opacity: 0 !important;
+  transform: none !important;
+}
+
+
+/* =================== FLÈCHES ============ */
+
+html
+.cj-subforum-carousel
+.cj-subforum-arrow {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+
+  width: 25px !important;
+  min-width: 25px !important;
+  max-width: 25px !important;
+
+  height: 25px !important;
+  min-height: 25px !important;
+  max-height: 25px !important;
+
+  margin: 0 !important;
+  padding: 0 0 2px !important;
+
+  color: var(--contrastLight) !important;
+  background: var(--neutral) !important;
+  background-image: none !important;
+
+  border: 1px solid var(--neutralDarker) !important;
+  border-radius: var(--radius-mini) !important;
+  box-shadow: none !important;
+
+  font-family: Arial, sans-serif !important;
+  font-size: 18px !important;
+  font-weight: 700 !important;
+  line-height: 1 !important;
+
+  box-sizing: border-box !important;
+  cursor: pointer;
+
+  appearance: none;
+  -webkit-appearance: none;
+
+  transition:
+    color .2s ease,
+    background .2s ease,
+    border-color .2s ease,
+    opacity .2s ease;
+}
+
+
+/* Placement de la flèche gauche */
+
+html
+.cj-subforum-carousel
+.cj-subforum-arrow--previous {
+  grid-column: 1;
+}
+
+
+/* Placement de la flèche droite */
+
+html
+.cj-subforum-carousel
+.cj-subforum-arrow--next {
+  grid-column: 3;
+}
+
+
+/* Survol des flèches */
+
+html
+.cj-subforum-carousel
+.cj-subforum-arrow:hover:not(:disabled) {
+  color: var(--accentClr) !important;
+  background: var(--neutralDarker) !important;
+  border-color: var(--accentClr) !important;
+}
+
+
+/* Flèche désactivée */
+
+html
+.cj-subforum-carousel
+.cj-subforum-arrow:disabled {
+  color: var(--contrastLight) !important;
+  opacity: .25 !important;
+  cursor: default !important;
+}
+
+
+/* Focus clavier */
+
+html
+.cj-subforum-carousel
+.cj-subforum-arrow:focus-visible,
+
+html
+.cj-subforum-carousel
+.cj-subforum-track > a:focus-visible {
+  outline: 1px solid var(--accentClr) !important;
+  outline-offset: 1px !important;
+}
+
+
+/* ================== LISTES SANS CARROUSEL ============ */
+
+html
+.category
+.forum_details.forum_subforums
+#subforum:not(.cj-subforum-carousel) {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: center;
+
+  width: 100%;
+  min-width: 0;
+  max-height: 36px;
+
+  overflow: hidden;
+}
+
+
+/* =========== GRADIENTS DU MODE NORMAL ========== */
+
+/* Tous les liens, pairs, impairs et survolés restent transparents */
+
+html[data-forum-layout="normal"]
+.category
+.forum_details.forum_subforums
+#subforum.cj-subforum-carousel
+.cj-subforum-track > a,
+
+html[data-forum-layout="normal"]
+.category
+.forum_details.forum_subforums
+#subforum.cj-subforum-carousel
+.cj-subforum-track > a:nth-child(odd),
+
+html[data-forum-layout="normal"]
+.category
+.forum_details.forum_subforums
+#subforum.cj-subforum-carousel
+.cj-subforum-track > a:nth-child(even),
+
+html[data-forum-layout="normal"]
+.category
+.forum_details.forum_subforums
+#subforum.cj-subforum-carousel
+.cj-subforum-track > a:nth-of-type(odd),
+
+html[data-forum-layout="normal"]
+.category
+.forum_details.forum_subforums
+#subforum.cj-subforum-carousel
+.cj-subforum-track > a:nth-of-type(even),
+
+html[data-forum-layout="normal"]
+.category
+.forum_details.forum_subforums
+#subforum.cj-subforum-carousel
+.cj-subforum-track > a:hover {
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
+
+  border: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+}
+
+
+/* Neutralise aussi les anciens pseudo-éléments éventuels */
+
+html[data-forum-layout="normal"]
+.category
+.forum_details.forum_subforums
+#subforum.cj-subforum-carousel
+.cj-subforum-track > a::before,
+
+html[data-forum-layout="normal"]
+.category
+.forum_details.forum_subforums
+#subforum.cj-subforum-carousel
+.cj-subforum-track > a::after {
+  display: none !important;
+
+  width: 0 !important;
+  height: 0 !important;
+
+  content: none !important;
+
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
+
+  border: 0 !important;
+  box-shadow: none !important;
+
+  opacity: 0 !important;
+  transform: none !important;
+}
+
+
+/* Les conteneurs restent également transparents */
+
+html[data-forum-layout="normal"]
+#subforum.cj-subforum-carousel,
+
+html[data-forum-layout="normal"]
+#subforum.cj-subforum-carousel
+.cj-subforum-viewport,
+
+html[data-forum-layout="normal"]
+#subforum.cj-subforum-carousel
+.cj-subforum-track {
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
+}
+
+
+/* Seule l’étiquette autour du texte possède un gradient */
+
+html[data-forum-layout="normal"]
+.category
+.forum_details.forum_subforums
+#subforum.cj-subforum-carousel
+.cj-subforum-track > a
+.cj-subforum-label {
+  display: inline-flex !important;
+  flex: 0 0 auto !important;
+
+  align-items: center !important;
+  justify-content: center !important;
+
+  width: fit-content !important;
+  min-width: 0 !important;
+  max-width: calc(100% - 10px) !important;
+
+  min-height: 24px !important;
+
+  margin: 0 !important;
+  padding: 2px 10px !important;
+
+  color: var(--stay-white) !important;
+
+  background:
+    linear-gradient(
+      .07turn,
+      var(--one),
+      var(--two)
+    ) !important;
+
+  border-radius: var(--radius-mini) !important;
+  box-sizing: border-box !important;
+
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  white-space: nowrap !important;
+}
+
+
+/* Variante paire : seul le petit bouton change de gradient */
+
+html[data-forum-layout="normal"]
+.category
+.forum_details.forum_subforums
+#subforum.cj-subforum-carousel
+.cj-subforum-track > a:nth-child(even)
+.cj-subforum-label,
+
+html[data-forum-layout="normal"]
+.category
+.forum_details.forum_subforums
+#subforum.cj-subforum-carousel
+.cj-subforum-track > a:nth-of-type(even)
+.cj-subforum-label {
+  background:
+    linear-gradient(
+      .07turn,
+      var(--three),
+      var(--one)
+    ) !important;
+}
+
+
+/* Survol : toujours limité au petit bouton */
+
+html[data-forum-layout="normal"]
+.category
+.forum_details.forum_subforums
+#subforum.cj-subforum-carousel
+.cj-subforum-track > a:hover
+.cj-subforum-label {
+  background:
+    linear-gradient(
+      .07turn,
+      var(--two),
+      var(--three)
+    ) !important;
+}
+
+
+/* Directory — titre nominatif plus petit */
+.directory-registry-card
+.directory-registry-welcome
+.fiche-st t2 {
+  display: block;
+  min-width: 0;
+
+  font-size: 13px !important;
+  line-height: 1.2 !important;
+  letter-spacing: 0 !important;
+
+  overflow-wrap: anywhere;
+  word-break: normal;
+}
+
+
+/* ============== SWITCHEROO DEPLIANT ========== */
+
+#switcheroo {
+  position: relative !important;
+  overflow: visible !important;
+  z-index: 999 !important;
+}
+
+#switcheroo > .switcheroo__squircles {
+  position: relative !important;
+  overflow: visible !important;
+}
+
+
+/* ================== BOUTON D’OUVERTURE ============== */
+
+#switcheroo .cj-switcheroo-toggle {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+
+  width: 25px !important;
+  min-width: 25px !important;
+  max-width: 25px !important;
+
+  height: 25px !important;
+  min-height: 25px !important;
+  max-height: 25px !important;
+
+  margin: 0 !important;
+  padding: 0 !important;
+
+  color: var(--contrastLight) !important;
+  background: var(--neutral) !important;
+
+  border: 0 !important;
+  border-radius: var(--radius-mini) !important;
+  box-shadow: none !important;
+
+  cursor: pointer;
+  overflow: visible !important;
+
+  transition:
+    color .2s ease,
+    background .2s ease,
+    transform .2s ease !important;
+}
+
+#switcheroo .cj-switcheroo-toggle:hover {
+  color: var(--accentClr) !important;
+  background: var(--neutralDarker) !important;
+}
+
+#switcheroo .cj-switcheroo-toggle > i {
+  display: block;
+
+  font-size: 11px;
+  line-height: 1;
+
+  transition: transform .25s ease;
+}
+
+#switcheroo.cj-switcheroo-expanded
+.cj-switcheroo-toggle > i {
+  transform: rotate(180deg);
+}
+
+
+/* ================== CONTENEUR DU MENU VERTICAL =========== */
+
+#switcheroo .cj-switcheroo-dropdown {
+  position: absolute !important;
+  top: calc(100% + 7px) !important;
+
+  right: 0 !important;
+  left: auto !important;
+
+  z-index: 1000 !important;
+
+  display: block !important;
+
+  width: 38px !important;
+  min-width: 38px !important;
+  max-width: 38px !important;
+
+  height: auto !important;
+  min-height: 0 !important;
+  max-height: min(320px, calc(100vh - 65px)) !important;
+
+  margin: 0 !important;
+  padding: 5px !important;
+
+  background: var(--neutral) !important;
+
+  border: 1px solid var(--neutralDarker) !important;
+  border-radius: var(--radius-mini) !important;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, .25) !important;
+
+  box-sizing: border-box !important;
+  overflow-x: hidden !important;
+  overflow-y: auto !important;
+
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+
+  transform: translateY(-6px) scale(.96) !important;
+  transform-origin: top right !important;
+
+  transition:
+    opacity .2s ease,
+    visibility 0s linear .2s,
+    transform .25s ease !important;
+}
+
+
+/* Menu ouvert */
+
+#switcheroo.cj-switcheroo-expanded
+.cj-switcheroo-dropdown {
+  opacity: 1 !important;
+  visibility: visible !important;
+  pointer-events: auto !important;
+
+  transform: translateY(0) scale(1) !important;
+
+  transition:
+    opacity .2s ease,
+    visibility 0s linear 0s,
+    transform .25s ease !important;
+}
+
+
+/* ============== LISTE VERTICALE =========== */
+
+#switcheroo
+.cj-switcheroo-dropdown__list {
+  display: flex !important;
+  flex-direction: column !important;
+  flex-wrap: nowrap !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+  gap: 5px !important;
+
+  width: 26px !important;
+  min-width: 26px !important;
+  max-width: 26px !important;
+
+  height: auto !important;
+
+  margin: 0 !important;
+  padding: 0 !important;
+
+  list-style: none !important;
+}
+
+
+/* Comptes et bouton + dans le menu */
+
+#switcheroo
+.cj-switcheroo-dropdown__list
+[data-action="switcheroo"],
+
+#switcheroo
+.cj-switcheroo-dropdown__list
+[data-action="open-login"] {
+  position: relative !important;
+
+  display: flex !important;
+  flex: 0 0 25px !important;
+  align-items: center !important;
+  justify-content: center !important;
+
+  width: 25px !important;
+  min-width: 25px !important;
+  max-width: 25px !important;
+
+  height: 25px !important;
+  min-height: 25px !important;
+  max-height: 25px !important;
+
+  margin: 0 !important;
+  padding: 0 !important;
+
+  opacity: 1 !important;
+  visibility: visible !important;
+  overflow: visible !important;
+  pointer-events: auto !important;
+
+  transform: none !important;
+}
+
+
+/* Images des comptes */
+
+#switcheroo
+.cj-switcheroo-dropdown__list
+.switcheroo__avatar,
+
+#switcheroo
+.cj-switcheroo-dropdown__list
+.switcheroo__avatar img {
+  display: block !important;
+
+  width: 25px !important;
+  min-width: 25px !important;
+  max-width: 25px !important;
+
+  height: 25px !important;
+  min-height: 25px !important;
+  max-height: 25px !important;
+
+  object-fit: cover !important;
+  border-radius: var(--radius-mini) !important;
+}
+
+
+/* Barre de défilement */
+
+#switcheroo
+.cj-switcheroo-dropdown {
+  scrollbar-width: thin;
+  scrollbar-color:
+    var(--contrastLighter)
+    transparent;
+}
+
+#switcheroo
+.cj-switcheroo-dropdown::-webkit-scrollbar {
+  width: 3px;
+}
+
+#switcheroo
+.cj-switcheroo-dropdown::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+#switcheroo
+.cj-switcheroo-dropdown::-webkit-scrollbar-thumb {
+  background: var(--contrastLighter);
+  border-radius: 10px;
+}
+
+
+/* Accessibilité */
+
+#switcheroo .cj-switcheroo-toggle:focus-visible {
+  outline: 1px solid var(--accentClr) !important;
+  outline-offset: 2px !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #switcheroo .cj-switcheroo-toggle,
+  #switcheroo .cj-switcheroo-toggle > i,
+  #switcheroo .cj-switcheroo-dropdown {
+    transition: none !important;
   }
+}
+
+/* Espacement vertical des comptes Switcheroo */
+
+#switcheroo
+.cj-switcheroo-dropdown__list {
+  gap: 9px !important;
+}
+
+#switcheroo
+.cj-switcheroo-dropdown__list
+[data-action="switcheroo"],
+
+#switcheroo
+.cj-switcheroo-dropdown__list
+[data-action="open-login"] {
+  flex: 0 0 30px !important;
+
+  width: 30px !important;
+  min-width: 30px !important;
+  max-width: 30px !important;
+
+  height: 30px !important;
+  min-height: 30px !important;
+  max-height: 30px !important;
+
+  margin: 0 !important;
+}
+
+
+/* L’avatar garde sa taille actuelle au centre de la zone */
+
+#switcheroo
+.cj-switcheroo-dropdown__list
+.switcheroo__avatar,
+
+#switcheroo
+.cj-switcheroo-dropdown__list
+.switcheroo__avatar img {
+  width: 25px !important;
+  min-width: 25px !important;
+  max-width: 25px !important;
+
+  height: 25px !important;
+  min-height: 25px !important;
+  max-height: 25px !important;
+}
+
+
+/* Le menu s’adapte aux zones légèrement plus larges */
+
+#switcheroo
+.cj-switcheroo-dropdown {
+  width: 44px !important;
+  min-width: 44px !important;
+  max-width: 44px !important;
+
+  padding: 6px !important;
+}
+
+#switcheroo
+.cj-switcheroo-dropdown__list {
+  width: 30px !important;
+  min-width: 30px !important;
+  max-width: 30px !important;
+}
+
+/* Switcheroo toujours au-dessus du bouton de bannière */
+html body#phpbb > nav#switcheroo.switcheroo,
+html body#phpbb > #switcheroo.switcheroo {
+  z-index: 2147483646 !important;
+  overflow: visible !important;
+}
+
+html body#phpbb > #switcheroo .switcheroo__squircles,
+html body#phpbb > #switcheroo .switcheroo__squircle {
+  z-index: 2147483647 !important;
+}
+
+/* Le bouton animé reste sous le Switcheroo */
+button.dark-banner-toggle {
+  z-index: 999 !important;
+}
+
+/* ======= RÉSUMÉS LONGS DU DIRECTORY JUSQU’À 1000 CARACTÈRES ======== */
+
+.directory-list .directory-summary {
+  /*
+   * Important : on retire le centrage flex.
+   * Sinon le début d’un long résumé peut être coupé.
+   */
+  display: block !important;
+
+  box-sizing: border-box;
+  min-width: 0;
+  min-height: 0;
+  max-width: none;
+  max-height: none;
+
+  /*
+   * La carte conserve sa taille.
+   * Seul le résumé défile verticalement.
+   */
+  overflow-x: hidden !important;
+  overflow-y: auto !important;
+  overscroll-behavior-y: contain;
+  scrollbar-gutter: stable;
+  touch-action: pan-y;
+
+  /*
+   * Le texte peut revenir à la ligne normalement,
+   * même en présence d’un mot ou d’un lien très long.
+   */
+  white-space: normal !important;
+  overflow-wrap: anywhere;
+  word-break: normal;
+  hyphens: auto;
+
+  /*
+   * Le résumé commence désormais en haut de la zone.
+   */
+  text-align: left;
+  padding: .8rem .9rem 1rem;
+
+  /*
+   * Conserve une zone fixe entre le pseudo
+   * et les informations du membre.
+   */
+  inset: 4.25rem .75rem 7.75rem;
+}
+
+/* Le défilement est activé lorsque le résumé devient visible. */
+.directory-list .directory-member:hover .directory-summary,
+.directory-list .directory-member:focus-within .directory-summary {
+  pointer-events: auto;
+}
+
+/* Scrollbar Firefox */
+.directory-list .directory-summary {
+  scrollbar-width: thin;
+  scrollbar-color:
+    var(--accentClr, #c97a64)
+    rgba(255, 255, 255, .12);
+}
+
+/* Scrollbar Chrome, Edge et Safari */
+.directory-list .directory-summary::-webkit-scrollbar {
+  width: 5px;
+}
+
+.directory-list .directory-summary::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, .1);
+  border-radius: 99px;
+}
+
+.directory-list .directory-summary::-webkit-scrollbar-thumb {
+  background: var(--accentClr, #c97a64);
+  border-radius: 99px;
+}
+
+.directory-list .directory-summary::-webkit-scrollbar-thumb:hover {
+  background: var(--accentClr, #c97a64);
+}
+
+/* Ajustement pour les cartes plus petites sur téléphone */
+@media (max-width: 600px) {
+  .directory-list .directory-summary {
+    inset: 3.75rem .5rem 6.5rem;
+    padding: .65rem .7rem .85rem;
+    font-size: .7rem;
+    line-height: 1.35;
+  }
+}
+
+/* ========= FENÊTRE DES SMILEYS pcq je l'ai pété ======== */
+
+html#sceditor_smilies {
+  box-sizing: border-box !important;
+  width: 100% !important;
+  min-width: 0 !important;
+  max-width: 100% !important;
+  height: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
+
+  overflow-x: hidden !important;
+  overflow-y: hidden !important;
+}
+
+html#sceditor_smilies body#sce_smilies_body {
+  box-sizing: border-box !important;
+  width: 100% !important;
+  min-width: 0 !important;
+  max-width: 100% !important;
+  height: 100% !important;
+  max-height: 100% !important;
+  margin: 0 !important;
+  padding: 5px !important;
+
+  overflow-x: hidden !important;
+  overflow-y: auto !important;
+  overscroll-behavior: contain;
+
+  scrollbar-width: thin;
+  scrollbar-color:
+    var(--accentClr, #c97a64)
+    rgba(0, 0, 0, .12);
+}
+
+#sce_smilies_body #smilies_header,
+#sce_smilies_body .smiley-element,
+#sce_smilies_body .clear {
+  box-sizing: border-box !important;
+  width: 100% !important;
+  min-width: 0 !important;
+  max-width: 100% !important;
+}
+
+#sce_smilies_body #smilies_header {
+  margin: 0 0 10px !important;
+  padding: 0 !important;
+  text-align: center;
+}
+
+#sce_smilies_body #smilies_header form,
+#sce_smilies_body #smilies_header select {
+  box-sizing: border-box !important;
+  max-width: 100% !important;
+}
+
+#sce_smilies_body .smiley-element {
+  display: block !important;
+  padding: 0 5px 10px !important;
+  white-space: normal !important;
+  overflow: visible !important;
+  overflow-wrap: normal !important;
+}
+
+#sce_smilies_body .smiley-element img {
+  display: inline-block !important;
+  max-width: 100% !important;
+  vertical-align: middle;
+}
+
+/* Chrome, Edge et Safari */
+#sce_smilies_body::-webkit-scrollbar {
+  width: 6px;
+  height: 0 !important;
+}
+
+#sce_smilies_body::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, .12);
+  border-radius: 99px;
+}
+
+#sce_smilies_body::-webkit-scrollbar-thumb {
+  background: var(--accentClr, #c97a64);
+  border-radius: 99px;
+}
+
+#sce_smilies_body::-webkit-scrollbar-thumb:hover {
+  background: var(--accentClr, #c97a64);
+}
+
+/* =======  STATISTIQUES AVEC DE GRANDS NOMBRES (sinon c'est moche) ======== */
+
+.forum_stats span {
+  box-sizing: border-box;
+  min-width: 0;
+  max-width: 100%;
+  white-space: nowrap;
+}
+
+/* À partir de 10 000 */
+.forum_stats span.forum-stat-long {
+  font-size: 8px !important;
+  letter-spacing: -.02em;
+}
+
+/* À partir de 100 000 */
+.forum_stats span.forum-stat-very-long {
+  font-size: 7px !important;
+  letter-spacing: -.04em;
+}
+
+.forum_stats span.forum-stat-long strong,
+.forum_stats span.forum-stat-very-long strong {
+  margin-right: 2px !important;
+}
+
+/* Renforcement lorsque les forums sont en colonnes */
+body.forum-columns .forum_stats span.forum-stat-long,
+body.index-columns .forum_stats span.forum-stat-long,
+.category.is-columns .forum_stats span.forum-stat-long {
+  font-size: 7.5px !important;
 }
