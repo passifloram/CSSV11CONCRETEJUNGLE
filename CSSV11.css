@@ -1,8 +1,4 @@
-/* CONCRETE JUNGLE — CSS corrigé, 16 septembre 2026.
-   Remplace le fichier fourni n° 1.
-   Chargement actuel à conserver : 01 (import), puis 03, puis 02.
-   Conserver les autres imports et les balises de couleur existants.
-   Les variantes de thème, de disposition et de mobile sont conservées. */
+
 
 /* ==========================================================
    SOMMAIRE — MOTS-CLÉS POUR CTRL + F  
@@ -6024,4 +6020,125 @@ body.forum-columns .forum_stats span.forum-stat-long,
 body.index-columns .forum_stats span.forum-stat-long,
 .category.is-columns .forum_stats span.forum-stat-long {
   font-size: 7.5px !important;
+}
+
+
+/* MySpace moderne : remplacer l'ancien bloc CSS cjmsdiary par celui-ci. */
+.cjmsdiary {
+  --cjmsdiary-accent:#66518f; --cjmsdiary-tint:#ede8f5;
+  --cjmsdiary-paper:#ffffff; --cjmsdiary-ink:#272630; --cjmsdiary-muted:#777480;
+  box-sizing:border-box; width:100%; max-width:900px; margin:24px auto;
+  overflow:hidden; border:1px solid #e6e4eb; border-radius:24px;
+  background:var(--cjmsdiary-paper); color:var(--cjmsdiary-ink);
+  font:14px/1.75 Arial,Helvetica,sans-serif; text-align:left; overflow-wrap:anywhere;
+}
+.cjmsdiary.cjmsdiary--bleu { --cjmsdiary-accent:#386a86; --cjmsdiary-tint:#e6eff6; }
+.cjmsdiary.cjmsdiary--violet { --cjmsdiary-accent:#66518f; --cjmsdiary-tint:#ede8f5; }
+.cjmsdiary.cjmsdiary--vert { --cjmsdiary-accent:#426958; --cjmsdiary-tint:#e8f0eb; }
+.cjmsdiary.cjmsdiary--rose { --cjmsdiary-accent:#985776; --cjmsdiary-tint:#f5e8ee; }
+.cjmsdiary * { box-sizing:border-box; }
+.cjmsdiary a { color:var(--cjmsdiary-accent); text-decoration:underline; text-underline-offset:4px; }
+.cjmsdiary a:focus-visible { outline:2px solid var(--cjmsdiary-accent); outline-offset:4px; }
+.cjmsdiary img { max-width:100%; height:auto; }
+.cjmsdiary .cjmsdiary-top { display:flex; justify-content:space-between; align-items:center; gap:12px; padding:17px 28px; font-size:10px; letter-spacing:2px; font-weight:700; }
+.cjmsdiary .cjmsdiary-badge { padding:5px 11px; border-radius:30px; background:var(--cjmsdiary-tint); color:var(--cjmsdiary-accent); font-size:9px; letter-spacing:1px; }
+.cjmsdiary .cjmsdiary-cover { display:block; width:100%; height:240px; object-fit:cover; margin:0; border:0; }
+.cjmsdiary .cjmsdiary-header { position:relative; padding:30px 32px; border-bottom:1px solid #efedf2; }
+.cjmsdiary .cjmsdiary-title { display:block; margin:0 0 10px; color:var(--cjmsdiary-ink); font:800 clamp(26px,4vw,44px)/1.08 Arial,Helvetica,sans-serif; letter-spacing:-1.5px; }
+.cjmsdiary .cjmsdiary-subtitle { color:var(--cjmsdiary-muted); font-size:12px; letter-spacing:1px; }
+.cjmsdiary .cjmsdiary-columns { display:grid; grid-template-columns:235px minmax(0,1fr); align-items:start; }
+.cjmsdiary .cjmsdiary-profile { min-width:0; padding:28px 24px; background:#f8f7fa; }
+.cjmsdiary .cjmsdiary-avatar { display:block; width:76px; height:76px; object-fit:cover; margin:0 0 18px; border-radius:22px; border:3px solid #fff; }
+.cjmsdiary .cjmsdiary-name { font:750 22px/1.2 Arial,Helvetica,sans-serif; letter-spacing:-.6px; }
+.cjmsdiary .cjmsdiary-handle { color:var(--cjmsdiary-muted); font-size:11px; margin-top:5px; }
+.cjmsdiary .cjmsdiary-label { display:block; margin:25px 0 9px; color:var(--cjmsdiary-muted); font:700 9px/1.5 Arial,sans-serif; letter-spacing:1.8px; }
+.cjmsdiary .cjmsdiary-profile .cjmsdiary-text { font-size:12px; line-height:1.8; }
+.cjmsdiary .cjmsdiary-mood { display:inline-block; padding:6px 11px; background:var(--cjmsdiary-tint); color:var(--cjmsdiary-accent); border-radius:9px; font-size:11px; }
+.cjmsdiary .cjmsdiary-main { min-width:0; padding:30px 32px; }
+.cjmsdiary .cjmsdiary-heading { display:block; margin:0 0 18px; color:var(--cjmsdiary-ink); font:750 27px/1.18 Arial,Helvetica,sans-serif; letter-spacing:-.8px; }
+.cjmsdiary .cjmsdiary-text { white-space:normal; }
+.cjmsdiary .cjmsdiary-photo { display:block; width:100%; height:auto; aspect-ratio:16/10; object-fit:cover; margin:22px 0 8px; border-radius:16px; }
+.cjmsdiary .cjmsdiary-gallery { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:10px; margin:18px 0 8px; }
+.cjmsdiary .cjmsdiary-gallery img { display:block; width:100%; height:auto; aspect-ratio:4/5; object-fit:cover; border-radius:14px; }
+.cjmsdiary .cjmsdiary-gallery--three { grid-template-columns:repeat(3,minmax(0,1fr)); }
+.cjmsdiary .cjmsdiary-gallery--three img { aspect-ratio:1; border-radius:10px; }
+.cjmsdiary .cjmsdiary-caption { display:block; color:var(--cjmsdiary-muted); font-size:10px; margin:7px 0 20px; }
+.cjmsdiary .cjmsdiary-date { display:block; margin:0 0 13px; color:var(--cjmsdiary-accent); font-size:9px; font-weight:700; letter-spacing:1.8px; }
+.cjmsdiary .cjmsdiary-footer { display:flex; flex-wrap:wrap; justify-content:space-between; gap:10px; padding:16px 28px; border-top:1px solid #efedf2; color:var(--cjmsdiary-muted); font-size:10px; }
+.cjmsdiary .cjmsdiary-friends { display:flex; flex-wrap:wrap; gap:6px; }
+.cjmsdiary .cjmsdiary-friends span { border:1px solid #e5e1eb; background:#fff; padding:4px 9px; border-radius:7px; font-size:10px; }
+.cjmsdiary.cjmsdiary--comment { max-width:800px; border-radius:18px; }
+.cjmsdiary--comment .cjmsdiary-main { display:grid; grid-template-columns:42px minmax(0,1fr); gap:15px; padding:22px; }
+.cjmsdiary--comment .cjmsdiary-avatar { width:42px; height:42px; margin:0; border:0; border-radius:14px; }
+.cjmsdiary--comment .cjmsdiary-heading { font-size:15px; letter-spacing:-.2px; margin-bottom:10px; }
+.cjmsdiary--comment .cjmsdiary-date { font-size:9px; margin-bottom:7px; }
+.cjmsdiary--comment .cjmsdiary-text { font-size:13px; }
+@media(max-width:650px) {
+  .cjmsdiary { border-radius:18px; }
+  .cjmsdiary .cjmsdiary-columns { grid-template-columns:1fr; }
+  .cjmsdiary .cjmsdiary-cover { height:175px; }
+  .cjmsdiary .cjmsdiary-profile { border-bottom:1px solid #efedf2; }
+  .cjmsdiary .cjmsdiary-profile .cjmsdiary-gallery { max-width:250px; }
+  .cjmsdiary .cjmsdiary-title { letter-spacing:-1px; }
+  .cjmsdiary .cjmsdiary-main,.cjmsdiary .cjmsdiary-header,.cjmsdiary .cjmsdiary-profile { padding:22px; }
+  .cjmsdiary .cjmsdiary-top,.cjmsdiary .cjmsdiary-footer { padding:15px 22px; }
+  .cjmsdiary .cjmsdiary-heading { font-size:23px; }
+  .cjmsdiary--comment .cjmsdiary-heading { font-size:15px; }
+}
+
+
+/* Neutralise l'habillage SMS uniquement autour des modèles cjmsdiary. */
+.blog_post:has(.cjmsdiary),
+.sms-first:has(.cjmsdiary),
+.sms-first-right:has(.cjmsdiary),
+.sms-first-right > .post_message:has(.cjmsdiary),
+.wrapped-sms:has(.cjmsdiary),
+.sms-box:has(.cjmsdiary),
+.sms-right:has(.cjmsdiary),
+.sms-mess-bottom:has(.cjmsdiary) {
+  display: block !important;
+  box-sizing: border-box !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  min-width: 0 !important;
+  height: auto !important;
+  max-height: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  float: none !important;
+  grid-template-columns: none !important;
+  gap: 0 !important;
+  background: transparent !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  overflow: visible !important;
+}
+
+/* Avatar et invitation de groupe de l'ancienne présentation. */
+.sms-first:has(.cjmsdiary) > .sms-first-left,
+.sms-box:has(.cjmsdiary) > .sms-left,
+.sms-right:has(.cjmsdiary) > .sms-mess-top,
+.sms-right:has(.cjmsdiary) > br {
+  display: none !important;
+}
+
+/* Pointe de la bulle SMS. */
+.sms-right:has(.cjmsdiary)::before,
+.sms-right:has(.cjmsdiary)::after {
+  display: none !important;
+  content: none !important;
+}
+
+/* Conserve les commandes d'édition et la date. */
+.sms-right:has(.cjmsdiary) > .sms-edit {
+  position: static !important;
+  width: auto !important;
+  margin: 0 !important;
+  text-align: right !important;
+}
+.sms-right:has(.cjmsdiary) > .sms-date {
+  width: auto !important;
+  margin: 8px 0 20px !important;
+  text-align: right !important;
 }
