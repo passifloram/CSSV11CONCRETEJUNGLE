@@ -6142,3 +6142,104 @@ body.index-columns .forum_stats span.forum-stat-long,
   margin: 8px 0 20px !important;
   text-align: right !important;
 }
+
+
+/* ================================================ */
+
+
+/* Concrete Jungle — profil des messages, habillage autonome, 12 octobre 2026.
+ * À charger APRÈS les feuilles existantes. Aucun import Amaterasu/Novemberwitch.
+ * Les scripts existants conservent le contenu, le classement et les plugins.
+ * @ROOT@ est développé par la préparation du fichier final.
+ */
+@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Work+Sans:wght@400;600;700;800&display=swap');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css');
+
+@ROOT@ {
+  --cjp-paper: var(--neutral, #f8f6f2);
+  --cjp-tab: var(--neutralTwo, #eae7e2);
+  --cjp-ink: var(--textColor, #29282c);
+  --cjp-muted: var(--contrastLighter, #79777c);
+  --cjp-accent: var(--one, var(--accentClr, #b9632c));
+  --cjp-second: var(--two, #a95784);
+  --cjp-line: var(--neutralDarker, #c9c5c0);
+  --cjp-text-font: 'Work Sans', sans-serif;
+  --cjp-title-font: 'Abril Fatface', serif;
+}
+
+/* En-tête. Aucun sélecteur sur le corps des messages ou la grille du sujet. */
+@ROOT@ > .post_head {
+  display: flex !important;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  grid-column: 1 / -1;
+  box-sizing: border-box;
+  width: 100%; min-width: 0; max-width: 100%;
+  height: auto; min-height: 0; max-height: none;
+  margin: 0; padding: 13px 18px;
+  border: 0; border-radius: 5px;
+  background: var(--cjp-paper);
+  box-shadow: none;
+  color: var(--cjp-ink);
+  font: 400 14px/1.45 var(--cjp-text-font);
+  text-align: left;
+  overflow: visible;
+}
+@ROOT@ > .post_head::before,
+@ROOT@ > .post_head::after { content: none; }
+@ROOT@ > .post_head > .post_name {
+  display: flex; flex: 1 1 0; flex-direction: column; gap: 6px;
+  box-sizing: border-box; width: auto; min-width: 0; max-width: 100%;
+  height: auto; margin: 0; padding: 0;
+  border: 0; border-radius: 0; background: transparent; box-shadow: none;
+}
+@ROOT@ .post_head .post_name_bloc {
+  display: block; width: auto; min-width: 0; margin: 0; padding: 0;
+  border: 0; background: transparent;
+}
+@ROOT@ .post_head .post_name_bloc > hr,
+@ROOT@ .post_head .post_name_bloc > .dot { display: none !important; }
+@ROOT@ .post_head .post_pseudo {
+  display: block; margin: 0; padding: 0; border: 0; background: none;
+  font: 400 32px/1.1 var(--cjp-title-font);
+  letter-spacing: 0; text-transform: none;
+  overflow-wrap: anywhere;
+}
+/* Conserver les couleurs des groupes et le lien de profil. */
+@ROOT@ .post_head .post_pseudo :is(a, span, strong) {
+  font-family: inherit; font-size: inherit; font-weight: 400;
+  line-height: inherit; letter-spacing: inherit; text-transform: inherit;
+  background: none; -webkit-text-fill-color: currentColor;
+}
+@ROOT@ .post_head .post_pseudo a { text-decoration: none; }
+@ROOT@ .post_head .post_quote {
+  display: block; box-sizing: border-box; width: auto; min-width: 0;
+  height: auto; margin: 0; padding: 0; border: 0; border-radius: 0;
+  background: transparent; box-shadow: none;
+  color: var(--cjp-ink);
+  font: 400 14px/1.45 var(--cjp-text-font) !important;
+  letter-spacing: 0; text-transform: none; overflow-wrap: anywhere;
+}
+@ROOT@ .post_head .post_quote :is(.user_field, .field_content) {
+  display: block; width: auto; height: auto; margin: 0; padding: 0;
+  color: inherit; background: transparent; border: 0;
+  font: inherit !important; letter-spacing: inherit; text-transform: none;
+}
+@ROOT@ .post_head :is(.post_quote, .post_image) :is(.field_label, .field_separator) {
+  display: none !important;
+}
+@ROOT@ .post_head .post_quote:empty { display: none; }
+@ROOT@ > .post_head > .post_image {
+  display: flex; flex: 0 0 78px; align-items: center; justify-content: center;
+  align-self: stretch; box-sizing: border-box;
+  width: 78px; min-width: 78px; max-width: 78px;
+  height: auto; min-height: 62px; max-height: none;
+  margin: 0; padding: 0 0 0 15px;
+  border: 0; border-left: 1px dashed var(--cjp-line);
+  border-radius: 0 !important; background: transparent;
+  box-shadow: none; overflow: visible !important;
+}
+@ROOT@ > .post_head > .post_image:not(:has(img)) { display: none !important; }
+@ROOT@ .post_head .post_image :is(.user_field, .field_content) {
